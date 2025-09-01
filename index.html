@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audiline - News Just a Tap Away</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Manrope -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Applying Manrope font to the entire body */
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #000000;
+            color: #FFFFFF;
+        }
+        /* Custom color for Tailwind */
+        .bg-brand-yellow { background-color: #ffc300; }
+        .text-brand-yellow { color: #ffc300; }
+        
+        /* Smooth scrolling for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+
+    <!-- 
+      HEADER SECTION 
+      - Fixed position to stay at the top.
+      - Contains the company logo and navigation links.
+    -->
+    <header class="bg-black/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center">
+                 <img src="Group 60.png" alt="Audiline Logo" class="h-10 w-auto">
+            </div>
+            
+            <!-- Navigation -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="text-white hover:text-brand-yellow transition-colors duration-300">Home</a>
+                <a href="#about" class="text-white hover:text-brand-yellow transition-colors duration-300">About</a>
+                <a href="#contact" class="text-white hover:text-brand-yellow transition-colors duration-300">Contact Us</a>
+            </nav>
+            
+            <!-- Mobile Menu Button (for potential future use) -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu (for potential future use) -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+             <a href="#home" class="block text-white py-2 hover:text-brand-yellow">Home</a>
+             <a href="#about" class="block text-white py-2 hover:text-brand-yellow">About</a>
+             <a href="#contact" class="block text-white py-2 hover:text-brand-yellow">Contact Us</a>
+        </div>
+    </header>
+
+    <main class="pt-20"> <!-- Padding top to offset the fixed header -->
+
+        <!-- 
+          HOME SECTION 
+          - The main hero section of the page.
+          - Displays the app mockup, headline, and download links.
+        -->
+        <section id="home" class="min-h-screen flex items-center justify-center py-20 px-6">
+            <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                
+                <!-- Left Column: Phone Mockup -->
+                <div class="flex justify-center">
+                    <div class="relative mx-auto border-gray-800 bg-gray-900 border-[10px] rounded-[2.5rem] h-[550px] w-[270px] shadow-xl">
+                        <div class="w-[125px] h-[15px] bg-gray-900 top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute"></div>
+                        <div class="h-[38px] w-[3px] bg-gray-800 absolute -left-[13px] top-[64px] rounded-l-lg"></div>
+                        <div class="h-[38px] w-[3px] bg-gray-800 absolute -left-[13px] top-[122px] rounded-l-lg"></div>
+                        <div class="h-[52px] w-[3px] bg-gray-800 absolute -right-[13px] top-[128px] rounded-r-lg"></div>
+                        <div class="rounded-[2rem] overflow-hidden w-full h-full bg-black flex items-center justify-center">
+                            <!-- Your company logo inside the phone screen -->
+                           <img src="Group 60.png" class="w-3/4 h-auto" alt="App Screen Logo">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Content -->
+                <div class="text-center md:text-left">
+                    <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+                        <span class="text-brand-yellow">Stay Updated,</span> Stay Ahead
+                    </h1>
+                    <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-6">News Just a Tap Away</h2>
+                    <p class="text-lg text-gray-300 max-w-md mx-auto md:mx-0 mb-8">
+                        Get your personalized news highlights of the day in just a few minutes, perfect for listening on the go.
+                    </p>
+                    
+                    <!-- Download Buttons -->
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <!-- 
+                          TODO: Add your Apple App Store link here 
+                        -->
+                        <a href="#" aria-label="Download on the App Store">
+                            <img src="image_3ff022.png" alt="Download on the App Store" class="h-12 md:h-14 hover:opacity-80 transition-opacity">
+                        </a>
+                        
+                        <!-- 
+                          TODO: Add your Google Play Store link here 
+                        -->
+                        <a href="#" aria-label="Get it on Google Play">
+                            <img src="image_3ff042.png" alt="Get it on Google Play" class="h-12 md:h-14 hover:opacity-80 transition-opacity">
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 
+          ABOUT SECTION 
+          - A brief description of your company or app.
+          - TODO: You can edit the content below.
+        -->
+        <section id="about" class="py-24 bg-gray-900/50 px-6">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl font-bold text-brand-yellow mb-4">About Us</h2>
+                <div class="max-w-3xl mx-auto text-gray-300 space-y-4">
+                    <p>
+                        Welcome to Audiline, where we are revolutionizing the way you consume news. In a fast-paced world, staying informed shouldn't be a chore. We believe in delivering concise, relevant, and engaging audio news summaries that fit seamlessly into your daily routine. Whether you're commuting, working out, or simply taking a break, Audiline provides the day's essential stories in a format that respects your time.
+                    </p>
+                    <p>
+                        Our mission is to cut through the noise and deliver clarity. We use advanced technology and a dedicated team of curators to bring you personalized news that matters most to you. Join us on our journey to make information more accessible, one tap at a time.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+          CONTACT US SECTION 
+          - Information on how users can get in touch.
+          - TODO: You can edit the content below.
+        -->
+        <section id="contact" class="py-24 px-6">
+             <div class="container mx-auto text-center">
+                <h2 class="text-3xl font-bold text-brand-yellow mb-4">Contact Us</h2>
+                <div class="max-w-3xl mx-auto text-gray-300 space-y-4">
+                    <p>
+                        We'd love to hear from you! Whether you have a question, feedback, or a partnership inquiry, feel free to reach out. Our team is always here to help and listen to our community.
+                    </p>
+                    <p class="mt-4">
+                        <strong>Email:</strong> <a href="mailto:support@audiline.com" class="text-brand-yellow hover:underline">support@audiline.com</a>
+                    </p>
+                     <p>
+                        <strong>Follow us on social media:</strong> @AudilineApp
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    
+    <!-- 
+      FOOTER SECTION 
+    -->
+    <footer class="bg-gray-900/50 border-t border-gray-800 py-6 px-6">
+        <div class="container mx-auto text-center text-gray-400">
+            <p>&copy; 2024 Audiline. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Simple script for mobile menu toggling
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
