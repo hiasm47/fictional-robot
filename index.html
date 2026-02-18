@@ -195,7 +195,20 @@
         </section>
         
     </main>
-    
+     <!-- 
+      COMING SOON OVERLAY (MODAL)
+    -->
+    <div id="coming-soon-modal" class="fixed inset-0 z-[100] bg-black hidden flex items-center justify-center p-6">
+        <div class="text-center max-w-2xl">
+            <h2 class="text-5xl md:text-7xl font-extrabold text-brand-yellow mb-8 tracking-tight uppercase">Coming Soon</h2>
+            <p class="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed">
+                We're fine-tuning the audio news experience. <br> Audiline will be available very soon.
+            </p>
+            <button onclick="hideComingSoon()" class="inline-block px-10 py-4 border-2 border-brand-yellow text-brand-yellow font-bold rounded-full hover:bg-brand-yellow hover:text-black transition-all duration-300">
+                Close
+            </button>
+        </div>
+    </div>
     <!-- 
       FOOTER SECTION 
     -->
@@ -220,6 +233,18 @@
                 mobileMenu.classList.add('hidden');
             });
         });
+         // --- COMING SOON MODAL LOGIC ---
+        const modal = document.getElementById('coming-soon-modal');
+        
+        function showComingSoon() {
+            modal.classList.remove('hidden');
+            document.body.classList.add('no-scroll'); // Prevents background scrolling
+        }
+
+        function hideComingSoon() {
+            modal.classList.add('hidden');
+            document.body.classList.remove('no-scroll'); // Re-enables scrolling
+        }
     </script>
 </body>
 </html>
