@@ -242,55 +242,55 @@
             </button>
         </div>
     </div>
-    <!-- 
+<!-- 
       EXPANDED FOOTER SECTION 
+      - Optimized for Mobile: Uses a 2-column grid on small screens.
     -->
-    <footer class="bg-gray-900 border-t border-gray-800 pt-16 pb-8 px-6">
+    <footer class="bg-gray-900 border-t border-gray-800 pt-12 pb-8 px-6">
         <div class="container mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-                <!-- Brand Info -->
-                <div class="col-span-1 md:col-span-1">
-                    <img src="Logo.png" alt="Audiline Logo" class="h-20 w-auto mb-6">
-                    <p class="text-gray-400 text-sm leading-relaxed">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10 mb-12">
+                
+                <!-- Brand Info: Spans full width on mobile -->
+                <div class="col-span-2 md:col-span-1">
+                    <img src="Logo.png" alt="Audiline Logo" class="h-16 md:h-20 w-auto mb-4" onerror="this.src='Group 60.png'">
+                    <p class="text-gray-400 text-sm leading-relaxed max-w-xs">
                         Redefining how you consume news. Personalized, audio-first updates delivered right to your pocket.
                     </p>
                 </div>
 
-         <!-- Footer Columns Wrapper -->
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-  <!-- Quick Links -->
-  <div>
-    <h4 class="text-white font-bold mb-6 uppercase tracking-wider text-sm">Quick Links</h4>
-    <ul class="space-y-4 text-gray-400 text-sm">
-      <li><a href="#home" class="hover:text-brand-yellow transition-colors">Home</a></li>
-      <li><a href="#about" class="hover:text-brand-yellow transition-colors">About Us</a></li>
-      <li><a href="#contact" class="hover:text-brand-yellow transition-colors">Contact Us</a></li>
-    </ul>
-  </div>
+                <!-- Quick Links -->
+                <div class="col-span-1">
+                    <h4 class="text-white font-bold mb-5 uppercase tracking-wider text-xs md:text-sm">Quick Links</h4>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li><a href="#home" class="hover:text-brand-yellow transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-brand-yellow transition-colors">About Us</a></li>
+                        <li><a href="#contact" class="hover:text-brand-yellow transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
 
-  <!-- Legal -->
-  <div>
-    <h4 class="text-white font-bold mb-6 uppercase tracking-wider text-sm">Legal</h4>
-    <ul class="space-y-4 text-gray-400 text-sm">
-      <li><a href="Privacy.pdf" class="hover:text-brand-yellow transition-colors">Privacy Policy</a></li>
-    </ul>
-  </div>
+                <!-- Legal -->
+                <div class="col-span-1">
+                    <h4 class="text-white font-bold mb-5 uppercase tracking-wider text-xs md:text-sm">Legal</h4>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li><a href="Privacy.pdf" target="_blank" class="hover:text-brand-yellow transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-brand-yellow transition-colors opacity-50 cursor-not-allowed">Terms</a></li>
+                    </ul>
+                </div>
 
-  <!-- Social Handles -->
-  <div>
-    <h4 class="text-white font-bold mb-6 uppercase tracking-wider text-sm">Follow Us</h4>
-    <ul class="space-y-4 text-gray-400 text-sm">
-      <li><a href="https://www.instagram.com/audiline.news/" target="_blank" rel="noopener noreferrer" class="hover:text-brand-yellow transition-colors">Instagram</a></li>
-      <li><a href="https://x.com/Audiline_news" target="_blank" rel="noopener noreferrer" class="hover:text-brand-yellow transition-colors">Twitter (X)</a></li>
-      <li><a href="https://www.linkedin.com/company/audiline-news/" target="_blank" rel="noopener noreferrer" class="hover:text-brand-yellow transition-colors">LinkedIn</a></li>
-      <li><a href="https://www.facebook.com/profile.php?id=61585067360805" target="_blank" rel="noopener noreferrer" class="hover:text-brand-yellow transition-colors">Facebook</a></li>
-    </ul>
-  </div>
-</div>
-
+                <!-- Follow Us: Spans full width on mobile for better alignment -->
+                <div class="col-span-2 md:col-span-1">
+                    <h4 class="text-white font-bold mb-5 uppercase tracking-wider text-xs md:text-sm">Follow Us</h4>
+                    <ul class="grid grid-cols-2 gap-y-3 md:block md:space-y-3 text-gray-400 text-sm">
+                        <li><a href="https://www.instagram.com/audiline.news/" target="_blank" rel="noopener noreferrer" class="hover:text-brand-yellow transition-colors">Instagram</a></li>
+                        <li><a href="https://x.com/Audiline_news" target="_blank" rel="noopener noreferrer" class="hover:text-brand-yellow transition-colors">Twitter (X)</a></li>
+                        <li><a href="https://www.linkedin.com/company/audiline-news/" target="_blank" rel="noopener noreferrer" class="hover:text-brand-yellow transition-colors">LinkedIn</a></li>
+                        <li><a href="https://www.facebook.com/profile.php?id=61585067360805" target="_blank" rel="noopener noreferrer" class="hover:text-brand-yellow transition-colors">Facebook</a></li>
+                    </ul>
+                </div>
+            </div>
 
             <!-- Bottom Copyright -->
-            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs">
+            <div class="border-t border-gray-800 pt-8 text-center md:text-left text-gray-500 text-xs">
                 <p>&copy; 2026 Audiline. All Rights Reserved.</p>
             </div>
         </div>
