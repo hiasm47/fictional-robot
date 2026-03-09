@@ -242,6 +242,79 @@
             </button>
         </div>
     </div>
+    <!-- 
+      PRIVACY POLICY OVERLAY (MODAL)
+    -->
+    <div id="privacy-modal" class="fixed inset-0 z-[100] bg-black hidden flex flex-col p-6">
+        <div class="container mx-auto flex flex-col h-full">
+            <header class="flex justify-between items-center py-6 border-b border-gray-800 mb-8">
+                <img src="Group 60.png" alt="Audiline Logo" class="h-8 w-auto">
+                <button onclick="hidePrivacy()" class="text-gray-400 hover:text-brand-yellow flex items-center space-x-2 transition-colors">
+                    <span class="uppercase tracking-widest text-sm font-bold">Back to Site</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </header>
+            
+            <div class="flex-grow overflow-y-auto custom-scrollbar pr-4">
+                <div class="max-w-4xl mx-auto py-10">
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-brand-yellow mb-4">Privacy Policy for Audiline</h1>
+                    <p class="text-gray-500 mb-12 font-bold tracking-wide">Last updated: March 08, 2026</p>
+                    
+                    <div class="space-y-10 text-gray-300 leading-relaxed text-lg">
+                        <section>
+                            <p class="text-xl">Audiline is a mobile app, it provides short audio news summaries. We collect minimal data, and only what you choose to provide.</p>
+                        </section>
+
+                        <section>
+                            <h2 class="text-2xl font-bold text-white mb-4">Read/listened history</h2>
+                            <p>To improve your experience and avoid repeating the same news items, the app stores a local record of what you've listened to on your device only. This data never leaves your device, is not sent to our servers, and is not shared with anyone. You can clear this history in the app settings if available.</p>
+                        </section>
+
+                        <section>
+                            <h2 class="text-2xl font-bold text-white mb-4">We do not collect any other personal data</h2>
+                            <p class="mb-4">This includes:</p>
+                            <ul class="list-none space-y-3">
+                                <li class="flex items-start"><span class="text-brand-yellow mr-2">●</span> No names, email, phone numbers, or other contact info</li>
+                                <li class="flex items-start"><span class="text-brand-yellow mr-2">●</span> No location data.</li>
+                                <li class="flex items-start"><span class="text-brand-yellow mr-2">●</span> No device IDs, advertising IDs, or analytics sent off-device.</li>
+                                <li class="flex items-start"><span class="text-brand-yellow mr-2">●</span> No usage tracking beyond local history.</li>
+                                <li class="flex items-start"><span class="text-brand-yellow mr-2">●</span> No cookies or tracking technologies.</li>
+                            </ul>
+                        </section>
+
+                        <section>
+                            <h2 class="text-2xl font-bold text-white mb-4">App Permissions</h2>
+                            <p>The app requests permission to play audio in the background or on the lock screen. This is solely for media playback and does not collect or transmit any personal data.</p>
+                        </section>
+
+                        <section>
+                            <h2 class="text-2xl font-bold text-white mb-4">Third-Party Content</h2>
+                            <p>All news content comes from public third-party sources. We do not host or control it, and any links to originals are for convenience—we are not responsible for their privacy practices.</p>
+                        </section>
+
+                        <section>
+                            <h2 class="text-2xl font-bold text-white mb-4">Data Security</h2>
+                            <p>Any optional email data we receive is handled securely. Local history is stored only on your device using standard Android storage.</p>
+                        </section>
+
+                        <section>
+                            <h2 class="text-2xl font-bold text-white mb-4">Changes to this Policy</h2>
+                            <p>We may update this Privacy Policy occasionally. Changes will be posted here with a new date. Continued use of the app means you accept the updates.</p>
+                        </section>
+
+                        <section>
+                            <h2 class="text-2xl font-bold text-white mb-4">Contact Us</h2>
+                            <p>Email: <a href="mailto:audiline.news@gmail.com" class="text-brand-yellow hover:underline">audiline.news@gmail.com</a></p>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            
+            <footer class="py-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+                <p>&copy; 2026 Audiline. All Rights Reserved.</p>
+            </footer>
+        </div>
+    </div>
 <!-- 
       EXPANDED FOOTER SECTION 
       - Optimized for Mobile: Uses a 2-column grid on small screens.
