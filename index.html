@@ -245,6 +245,29 @@ src="https://www.facebook.com/tr?id=2617990598594729&ev=PageView&noscript=1"
             </div>
         </section>
         
+        <!-- DELETE ACCOUNT SECTION -->
+<section id="deleteaccount" class="py-24 px-6 hidden">
+  <div class="container mx-auto text-center max-w-lg">
+    <h2 class="text-3xl font-bold text-brand-yellow mb-6">Delete account</h2>
+    <p class="text-gray-300 text-lg leading-relaxed">
+      To delete your account, kindly email us at the address below.
+    </p>
+    <p class="mt-4 text-lg">
+      <a href="mailto:audiline.news@gmail.com" class="text-brand-yellow hover:underline">
+        audiline.news@gmail.com
+      </a>
+    </p>
+    <p class="mt-4 text-gray-300">
+      Once we receive your request, we will remove all the data associated with your account.
+    </p>
+    <p class="mt-6">
+      <a href="#home" class="inline-block px-5 py-2 border border-brand-yellow text-brand-yellow rounded hover:bg-brand-yellow hover:text-black transition">
+        Back to Home
+      </a>
+    </p>
+  </div>
+</section>
+
     </main>
      <!-- 
       COMING SOON OVERLAY (MODAL)
@@ -283,7 +306,8 @@ src="https://www.facebook.com/tr?id=2617990598594729&ev=PageView&noscript=1"
                         <li><a href="#home" class="hover:text-brand-yellow transition-colors">Home</a></li>
                         <li><a href="#about" class="hover:text-brand-yellow transition-colors">About Us</a></li>
                         <li><a href="#contact" class="hover:text-brand-yellow transition-colors">Contact Us</a></li>
-                        <li><button onclick="showDeleteAccount()" class="hover:text-brand-yellow transition-colors text-left">Delete Account</button></li>
+                      <li><a href="#deleteaccount" class="hover:text-brand-yellow transition-colors block">Delete Account</a></li>
+
                     </ul>
                 </div>
 
@@ -316,6 +340,27 @@ src="https://www.facebook.com/tr?id=2617990598594729&ev=PageView&noscript=1"
     </footer>
       
     <script>
+        // --- DELETE ACCOUNT PAGE HANDLING ---
+const deleteSection = document.getElementById("deleteaccount");
+
+function renderContentFromHash() {
+  const hash = window.location.hash;
+
+  if (hash === "#deleteaccount") {
+    // Show the delete account page
+    deleteSection.classList.remove("hidden");
+    // Optionally hide other sections if you want a SPA‑style UX
+    // Example: document.querySelector("#home").classList.add("hidden");
+  } else {
+    // Hide delete account page on other hashes or no hash
+    deleteSection.classList.add("hidden");
+  }
+}
+
+// Run on load and on hash change
+window.addEventListener("load", renderContentFromHash);
+window.addEventListener("hashchange", renderContentFromHash);
+
         // Simple script for mobile menu toggling
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
