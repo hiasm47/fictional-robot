@@ -370,16 +370,22 @@ src="https://www.facebook.com/tr?id=2617990598594729&ev=PageView&noscript=1"
             });
         });
         
-        function showDeleteAccount() {
-            homeView.classList.add('view-hidden');
-            privacyView.classList.add('view-hidden');
-            deleteView.classList.remove('view-hidden');
-            window.scrollTo(0, 0);
+     
+
+         // --- COMING SOON and delete account MODAL LOGIC ---
+        const modal = document.getElementById('coming-soon-modal');
+        const deleteModal = document.getElementById('view-delete-account');
+
+
+         function showDeleteAccount() {
+            deleteModal.classList.remove('hidden');
+            document.body.classList.add('no-scroll');
         }
 
-         // --- COMING SOON MODAL LOGIC ---
-        const modal = document.getElementById('coming-soon-modal');
-        
+        function hideDeleteAccount() {
+            deleteModal.classList.add('hidden');
+            document.body.classList.remove('no-scroll');
+        }
         function showComingSoon() {
             modal.classList.remove('hidden');
             document.body.classList.add('no-scroll'); // Prevents background scrolling
