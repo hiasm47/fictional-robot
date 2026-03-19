@@ -314,46 +314,7 @@ src="https://www.facebook.com/tr?id=2617990598594729&ev=PageView&noscript=1"
             </div>
         </div>
     </footer>
-           <!-- 
-      DELETE ACCOUNT VIEW 
-    -->
-    <div id="view-delete-account" class="view-hidden min-h-screen flex flex-col bg-black">
-        <header class="bg-black/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 border-b border-gray-800">
-            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-                <button onclick="showHome()" class="flex items-center">
-                    <img src="Logo.png" alt="Audiline Logo" class="h-10 w-auto">
-                </button>
-                <button onclick="showHome()" class="text-gray-400 hover:text-brand-yellow flex items-center space-x-2 transition-colors">
-                    <span class="uppercase tracking-widest text-sm font-bold">BACK TO SITE</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                </button>
-            </div>
-        </header>
-        <main class="flex-grow flex items-center justify-center pt-24 px-6">
-            <div class="max-w-2xl mx-auto text-center py-20">
-                <h1 class="text-4xl md:text-6xl font-extrabold text-brand-yellow mb-8 tracking-tight">Delete account</h1>
-                <div class="bg-gray-900/50 p-8 md:p-12 rounded-3xl border border-gray-800 shadow-2xl">
-                    <p class="text-xl md:text-2xl text-gray-300 leading-relaxed mb-8">
-                        To delete your account, kindly email us at the address below. 
-                    </p>
-                    <p class="text-brand-yellow text-2xl md:text-3xl font-bold mb-8">
-                        <a href="mailto:audiline.news@gmail.com" class="hover:underline">audiline.news@gmail.com</a>
-                    </p>
-                    <p class="text-gray-400 text-lg italic">
-                        Once we receive your request, we will remove all the data associated with your account.
-                    </p>
-                </div>
-                <div class="mt-12">
-                    <button onclick="showHome()" class="px-8 py-3 border border-gray-700 text-gray-400 rounded-full hover:border-brand-yellow hover:text-brand-yellow transition-all">
-                        Return to Home
-                    </button>
-                </div>
-            </div>
-        </main>
-        <footer class="bg-gray-900 border-t border-gray-800 py-8 px-6 text-center">
-            <p class="text-gray-500 text-xs">&copy; 2026 Audiline. All Rights Reserved.</p>
-        </footer>
-    </div>
+      
     <script>
         // Simple script for mobile menu toggling
         const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -374,18 +335,7 @@ src="https://www.facebook.com/tr?id=2617990598594729&ev=PageView&noscript=1"
 
          // --- COMING SOON and delete account MODAL LOGIC ---
         const modal = document.getElementById('coming-soon-modal');
-        const deleteModal = document.getElementById('view-delete-account');
-
-
-         function showDeleteAccount() {
-            deleteModal.classList.remove('hidden');
-            document.body.classList.add('no-scroll');
-        }
-
-        function hideDeleteAccount() {
-            deleteModal.classList.add('hidden');
-            document.body.classList.remove('no-scroll');
-        }
+      
         function showComingSoon() {
             modal.classList.remove('hidden');
             document.body.classList.add('no-scroll'); // Prevents background scrolling
