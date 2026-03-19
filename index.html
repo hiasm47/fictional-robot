@@ -321,7 +321,7 @@ src="https://www.facebook.com/tr?id=2617990598594729&ev=PageView&noscript=1"
         <header class="bg-black/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 border-b border-gray-800">
             <div class="container mx-auto px-6 py-4 flex justify-between items-center">
                 <button onclick="showHome()" class="flex items-center">
-                    <img src="Group 60.png" alt="Audiline Logo" class="h-10 w-auto">
+                    <img src="Logo.png" alt="Audiline Logo" class="h-10 w-auto">
                 </button>
                 <button onclick="showHome()" class="text-gray-400 hover:text-brand-yellow flex items-center space-x-2 transition-colors">
                     <span class="uppercase tracking-widest text-sm font-bold">Back to Site</span>
@@ -369,6 +369,14 @@ src="https://www.facebook.com/tr?id=2617990598594729&ev=PageView&noscript=1"
                 mobileMenu.classList.add('hidden');
             });
         });
+        
+        function showDeleteAccount() {
+            homeView.classList.add('view-hidden');
+            privacyView.classList.add('view-hidden');
+            deleteView.classList.remove('view-hidden');
+            window.scrollTo(0, 0);
+        }
+
          // --- COMING SOON MODAL LOGIC ---
         const modal = document.getElementById('coming-soon-modal');
         
