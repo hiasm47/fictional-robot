@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audiline - News Just a Tap Away</title>
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2617990598594729');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=2617990598594729&ev=PageView&noscript=1"/></noscript>
+
+    <!-- Google tag -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V501KNRQMP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-V501KNRQMP');
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MobileApplication",
+      "name": "Audiline",
+      "description": "Short audio news app",
+      "applicationCategory": "NewsApplication",
+      "operatingSystem": "Android",
+      "offers": {"@type": "Offer", "price": "0"},
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.7",
+        "reviewCount": "1500"
+      },
+      "url": "https://www.audiline.com/"
+    }
+    </script>
+
+    <link rel="icon" type="image/png" href="Logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --yellow: #ffc300;
+            --yellow-dim: rgba(255,195,0,0.12);
+            --yellow-glow: rgba(255,195,0,0.35);
+            --bg: #050505;
+            --bg-2: #0d0d0d;
+            --bg-3: #111111;
+            --border: rgba(255,255,255,0.07);
+            --text-muted: #888;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: var(--bg);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* ── NOISE OVERLAY ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.025;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-size: 256px;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Manrope', sans-serif; }
+
+        /* ── HEADER ── */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 50;
+            padding: 0 2rem;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(5,5,5,0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo-img { height: 36px; width: auto; }
+
+        nav { display: flex; gap: 2.5rem; align-items: center; }
+
+        nav a {
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: var(--yellow); }
+
+        .hamburger { display: none; background: none; border: none; cursor: pointer; color: #fff; }
+
+        #mobile-menu {
+            display: none;
+            position: fixed;
+            top: 72px; left: 0; right: 0;
+            background: rgba(5,5,5,0.97);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 2rem;
+            z-index: 49;
+        }
+        #mobile-menu a {
+            display: block;
+            font-family: 'Manrope', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            transition: color 0.2s;
+        }
+        #mobile-menu a:last-child { border-bottom: none; }
+        #mobile-menu a:hover { color: var(--yellow); }
+        #mobile-menu.open { display: block; }
+
+        /* ── HERO ── */
+        #home {
+            min-height: 100vh;
+            padding-top: 72px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Radial glow behind phone */
+        #home::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 30%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,195,0,0.08) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Animated grid lines */
+        #home::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,195,0,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,195,0,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* ── PHONE MOCKUP ── */
+        .phone-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .phone {
+            position: relative;
+            width: 260px;
+            height: 530px;
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            border-radius: 44px;
+            border: 1.5px solid rgba(255,255,255,0.1);
+            box-shadow:
+                0 0 0 1px rgba(255,255,255,0.04),
+                0 30px 80px rgba(0,0,0,0.8),
+                0 0 60px rgba(255,195,0,0.08),
+                inset 0 1px 0 rgba(255,255,255,0.08);
+            animation: float 5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(-1deg); }
+            50% { transform: translateY(-14px) rotate(1deg); }
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 12px;
+            background: #0a0a0a;
+            border-radius: 0 0 16px 16px;
+            z-index: 2;
+        }
+
+        .phone-screen {
+            position: absolute;
+            inset: 12px;
+            border-radius: 33px;
+            overflow: hidden;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .phone-screen-inner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at 50% 50%, rgba(255,195,0,0.06) 0%, transparent 70%);
+        }
+
+        .phone-screen-inner img {
+            width: 65%;
+            height: auto;
+        }
+
+        /* Floating badges */
+        .badge {
+            position: absolute;
+            background: rgba(15,15,15,0.95);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 0.6rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            white-space: nowrap;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            animation: badge-float 4s ease-in-out infinite;
+        }
+        .badge-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--yellow);
+            box-shadow: 0 0 8px var(--yellow);
+        }
+        .badge-left {
+            left: -70px;
+            top: 30%;
+            animation-delay: 0s;
+        }
+        .badge-right {
+            right: -60px;
+            bottom: 28%;
+            animation-delay: 1.5s;
+        }
+        @keyframes badge-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        /* ── HERO TEXT ── */
+        .hero-text { max-width: 520px; }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--yellow);
+            background: var(--yellow-dim);
+            border: 1px solid rgba(255,195,0,0.2);
+            padding: 0.35rem 0.9rem;
+            border-radius: 100px;
+            margin-bottom: 1.8rem;
+        }
+        .eyebrow-dot {
+            width: 5px; height: 5px;
+            border-radius: 50%;
+            background: var(--yellow);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.7); }
+        }
+
+        .hero-h1 {
+            font-size: clamp(2.8rem, 5vw, 4.2rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-h1 .accent {
+            color: var(--yellow);
+            position: relative;
+        }
+
+        .hero-h1 .accent::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--yellow);
+            border-radius: 2px;
+            opacity: 0.4;
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            max-width: 420px;
+        }
+
+        /* Download buttons */
+        .download-row {
+            display: flex;
+            gap: 0.875rem;
+            flex-wrap: wrap;
+        }
+
+        .dl-btn {
+            display: inline-block;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            transition: transform 0.2s, filter 0.2s;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .dl-btn:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.1);
+        }
+        .dl-btn img {
+            height: 52px;
+            width: auto;
+            display: block;
+            border-radius: 12px;
+        }
+
+        /* ── SECTION SHARED ── */
+        section { position: relative; z-index: 1; }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--yellow);
+            margin-bottom: 1.2rem;
+        }
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 28px; height: 1px;
+            background: var(--yellow);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ── ABOUT ── */
+        #about {
+            padding: 10rem 2rem;
+            background: var(--bg-2);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .about-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.6fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        .about-left { position: sticky; top: 100px; }
+
+        .about-stat {
+            margin-top: 3rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: var(--bg-3);
+        }
+        .about-stat-num {
+            font-family: 'Manrope', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--yellow);
+            line-height: 1;
+        }
+        .about-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.3rem;
+            letter-spacing: 0.05em;
+        }
+
+        .about-right p {
+            font-size: 1.05rem;
+            color: #aaa;
+            line-height: 1.85;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Feature cards */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        .feature-card {
+            background: var(--bg-3);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .feature-card:hover {
+            border-color: rgba(255,195,0,0.25);
+            transform: translateY(-3px);
+        }
+
+        .feature-icon {
+            width: 40px; height: 40px;
+            background: var(--yellow-dim);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.85rem;
+            font-size: 1.2rem;
+        }
+
+        .feature-card h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 0.35rem;
+            letter-spacing: -0.01em;
+        }
+
+        .feature-card p {
+            font-size: 0.8rem !important;
+            color: var(--text-muted) !important;
+            line-height: 1.5 !important;
+            margin: 0 !important;
+        }
+
+        /* ── CONTACT ── */
+        #contact {
+            padding: 10rem 2rem;
+        }
+
+        .contact-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .contact-email-block {
+            margin-top: 2.5rem;
+            padding: 1.5rem 2rem;
+            background: var(--bg-2);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+        }
+        .contact-email-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            margin-bottom: 0.4rem;
+        }
+        .contact-email-link {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--yellow);
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        .contact-email-link:hover { opacity: 0.75; }
+
+        .contact-right h4 {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        .social-card {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 1.2rem;
+            background: var(--bg-2);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            text-decoration: none;
+            color: #fff;
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            transition: border-color 0.2s, background 0.2s, transform 0.2s;
+        }
+        .social-card:hover {
+            border-color: rgba(255,195,0,0.3);
+            background: var(--yellow-dim);
+            color: var(--yellow);
+            transform: translateY(-2px);
+        }
+
+        .social-card img {
+            width: 22px; height: 22px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            flex-shrink: 0;
+        }
+
+        /* ── DELETE ACCOUNT ── */
+        #deleteaccount {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 60;
+            background: rgba(0,0,0,0.97);
+            backdrop-filter: blur(20px);
+            padding: 10rem 2rem;
+            overflow-y: auto;
+        }
+        #deleteaccount.show {
+            display: block;
+        }
+        .delete-inner {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .delete-inner p { color: var(--text-muted); line-height: 1.8; margin-bottom: 1rem; }
+        .delete-inner a.back-btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.7rem 1.8rem;
+            border: 1px solid var(--yellow);
+            color: var(--yellow);
+            border-radius: 100px;
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+        }
+        .delete-inner a.back-btn:hover {
+            background: var(--yellow);
+            color: #000;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--bg-2);
+            border-top: 1px solid var(--border);
+            padding: 4rem 2rem 2.5rem;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.8fr 1fr 1fr 1.2fr;
+            gap: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand img { height: 36px; margin-bottom: 1rem; }
+        .footer-brand p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            max-width: 240px;
+        }
+
+        .footer-col h4 {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #555;
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 0.65rem; }
+        .footer-col ul li a {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-col ul li a:hover { color: var(--yellow); }
+        .footer-col ul li a.disabled {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-bottom p {
+            font-size: 0.75rem;
+            color: #444;
+        }
+
+        /* ── COMING SOON MODAL ── */
+        #coming-soon-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(20px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        #coming-soon-modal.open {
+            display: flex;
+        }
+
+        .modal-inner {
+            text-align: center;
+            max-width: 500px;
+        }
+
+        .modal-inner .modal-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--yellow);
+            background: var(--yellow-dim);
+            border: 1px solid rgba(255,195,0,0.2);
+            padding: 0.35rem 0.9rem;
+            border-radius: 100px;
+            margin-bottom: 2rem;
+        }
+
+        .modal-inner h2 {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 0.95;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-inner h2 span {
+            display: block;
+            color: var(--yellow);
+        }
+
+        .modal-inner p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+        }
+
+        .modal-close {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 2rem;
+            background: transparent;
+            border: 1.5px solid rgba(255,255,255,0.15);
+            color: #fff;
+            border-radius: 100px;
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .modal-close:hover {
+            border-color: var(--yellow);
+            background: var(--yellow-dim);
+            color: var(--yellow);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .hero-inner { grid-template-columns: 1fr; gap: 4rem; text-align: center; }
+            .hero-text { max-width: none; }
+            .hero-sub { max-width: none; }
+            .download-row { justify-content: center; }
+            .phone-wrap { order: -1; }
+            .badge-left, .badge-right { display: none; }
+            .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+            .about-left { position: static; }
+            .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            nav { display: none; }
+            .hamburger { display: block; }
+        }
+
+        @media (max-width: 600px) {
+            .footer-grid { grid-template-columns: 1fr; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .social-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <img src="Logo.png" alt="Audiline" class="logo-img">
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+        </button>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div id="mobile-menu">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <main>
+
+        <!-- HERO -->
+        <section id="home">
+            <div class="hero-inner">
+
+                <!-- Phone -->
+                <div class="phone-wrap">
+                    <div class="phone">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                            <div class="phone-screen-inner">
+                                <img src="Logo.png" alt="Audiline App">
+                            </div>
+                        </div>
+                        <div class="badge badge-left">
+                            <span class="badge-dot"></span>
+                            Live Updates
+                        </div>
+                        <div class="badge badge-right">
+                            <span class="badge-dot"></span>
+                            Audio-First
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text -->
+                <div class="hero-text">
+                    <div class="eyebrow">
+                        <span class="eyebrow-dot"></span>
+                        Audio News Reimagined
+                    </div>
+                    <h1 class="hero-h1">
+                        Stay Updated,<br>
+                        <span class="accent">Stay Ahead</span>
+                    </h1>
+                    <p class="hero-sub">
+                        Get your personalized news highlights of the day in just a few minutes — perfect for listening on the go.
+                    </p>
+                    <div class="download-row">
+                        <button class="dl-btn"
+                            onclick="gtag('event', 'download_click', {'platform': 'app_store'}); showComingSoon();"
+                            aria-label="Download on the App Store">
+                            <img src="image 4.png" alt="App Store">
+                        </button>
+                        <button class="dl-btn"
+                            onclick="gtag('event', 'download_click', {'platform': 'google_play'}); showComingSoon();"
+                            aria-label="Get it on Google Play">
+                            <img src="image 3.png" alt="Google Play">
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about">
+            <div class="about-inner">
+
+                <div class="about-left reveal">
+                    <div class="section-label">Who We Are</div>
+                    <h2 class="section-title">News that fits your life</h2>
+                    <div class="about-stat">
+                        <div class="about-stat-num">4.7★</div>
+                        <div class="about-stat-label">Average rating · 1,500+ reviews</div>
+                    </div>
+                </div>
+
+                <div class="about-right reveal" style="transition-delay:0.15s">
+                    <p>
+                        Welcome to Audiline, where we're revolutionizing the way you consume news. In a fast-paced world, staying informed shouldn't be a chore. We deliver concise, relevant, and engaging audio news summaries that fit seamlessly into your daily routine.
+                    </p>
+                    <p>
+                        Whether you're commuting, working out, or simply taking a break, Audiline provides the day's essential stories in a format that respects your time. Our mission is to cut through the noise and deliver clarity.
+                    </p>
+
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🎧</div>
+                            <h4>Audio-First</h4>
+                            <p>Hands-free news listening built for your lifestyle.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">⚡</div>
+                            <h4>Bite-Sized</h4>
+                            <p>Get the full picture in just a few minutes a day.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🎯</div>
+                            <h4>Personalized</h4>
+                            <p>Stories curated to the topics that matter to you.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🔔</div>
+                            <h4>Always Fresh</h4>
+                            <p>Breaking news delivered the moment it happens.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+            <div class="contact-inner">
+
+                <div class="reveal">
+                    <div class="section-label">Get in Touch</div>
+                    <h2 class="section-title">We'd love to hear from you</h2>
+                    <p style="color:var(--text-muted); line-height:1.8; margin-bottom:0.5rem;">
+                        Whether you have a question, feedback, or a partnership inquiry — our team is always here to listen.
+                    </p>
+                    <div class="contact-email-block">
+                        <div class="contact-email-label">Email us at</div>
+                        <a href="mailto:audiline.news@gmail.com" class="contact-email-link">audiline.news@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="reveal" style="transition-delay:0.15s">
+                    <h4>Follow us on</h4>
+                    <div class="social-grid">
+                        <a href="https://www.instagram.com/audiline.news/" target="_blank" rel="noopener"
+                            onclick="gtag('event', 'social_icon_click', {'platform': 'instagram'});"
+                            class="social-card">
+                            <img src="Instagram_icon.png" alt="Instagram">
+                            Instagram
+                        </a>
+                        <a href="https://x.com/Audiline_news" target="_blank" rel="noopener"
+                            onclick="gtag('event', 'social_icon_click', {'platform': 'twitter'});"
+                            class="social-card">
+                            <img src="xlogo.avif" alt="X / Twitter">
+                            Twitter (X)
+                        </a>
+                        <a href="https://www.linkedin.com/company/audiline-news/" target="_blank" rel="noopener"
+                            onclick="gtag('event', 'social_icon_click', {'platform': 'linkedin'});"
+                            class="social-card">
+                            <img src="LinkedIn_icon.png" alt="LinkedIn">
+                            LinkedIn
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61585067360805" target="_blank" rel="noopener"
+                            onclick="gtag('event', 'social_icon_click', {'platform': 'facebook'});"
+                            class="social-card">
+                            <img src="Facebook_logo.png" alt="Facebook">
+                            Facebook
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- DELETE ACCOUNT -->
+        <section id="deleteaccount">
+            <div class="delete-inner">
+                <div class="section-label">Account Management</div>
+                <h2 class="section-title">Delete your account</h2>
+                <p>To delete your account, kindly email us at the address below. Once we receive your request, we will remove all data associated with your account.</p>
+                <p>
+                    <a href="mailto:audiline.news@gmail.com" style="color:var(--yellow);">audiline.news@gmail.com</a>
+                </p>
+                <a href="#home" class="back-btn">← Back to Home</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- COMING SOON MODAL -->
+    <div id="coming-soon-modal">
+        <div class="modal-inner">
+            <div class="modal-tag">
+                <span style="width:5px;height:5px;border-radius:50%;background:var(--yellow);display:inline-block;"></span>
+                Launching Soon
+            </div>
+            <h2>
+                Coming<br>
+                <span>Soon</span>
+            </h2>
+            <p>We're fine-tuning the audio news experience.<br>Audiline will be available very soon.</p>
+            <button class="modal-close" onclick="hideComingSoon()">Close</button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="Logo.png" alt="Audiline">
+                <p>Redefining how you consume news. Personalized, audio-first updates delivered right to your pocket.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#deleteaccount">Delete Account</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="Privacy.pdf" target="_blank">Privacy Policy</a></li>
+                    <li><a href="#" class="disabled">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <ul>
+                    <li><a href="https://www.instagram.com/audiline.news/" target="_blank" rel="noopener">Instagram</a></li>
+                    <li><a href="https://x.com/Audiline_news" target="_blank" rel="noopener">Twitter (X)</a></li>
+                    <li><a href="https://www.linkedin.com/company/audiline-news/" target="_blank" rel="noopener">LinkedIn</a></li>
+                    <li><a href="https://www.facebook.com/profile.php?id=61585067360805" target="_blank" rel="noopener">Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Audiline. All Rights Reserved.</p>
+            <p style="color:#333;">Built for listeners.</p>
+        </div>
+    </footer>
+
+    <script>
+        // ── DELETE ACCOUNT OVERLAY ──
+        const deleteSection = document.getElementById("deleteaccount");
+        let isDeleteAccountVisible = false;
+
+        function showDeleteAccount() {
+            deleteSection.classList.add('show');
+            document.body.style.overflow = 'hidden';
+            isDeleteAccountVisible = true;
+        }
+
+        function hideDeleteAccount() {
+            deleteSection.classList.remove('show');
+            document.body.style.overflow = '';
+            isDeleteAccountVisible = false;
+            // Remove hash without scrolling
+            history.replaceState(null, null, ' ');
+        }
+
+        // Handle hash navigation
+        function handleHashChange() {
+            if (window.location.hash === "#deleteaccount") {
+                showDeleteAccount();
+            } else if (isDeleteAccountVisible) {
+                hideDeleteAccount();
+            }
+        }
+
+        window.addEventListener("hashchange", handleHashChange);
+        window.addEventListener("load", handleHashChange);
+
+        // Hide on scroll (when delete account is visible)
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            if (isDeleteAccountVisible) {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    hideDeleteAccount();
+                }, 50);
+            }
+        });
+
+        // Hide on backdrop click
+        deleteSection.addEventListener('click', (e) => {
+            if (e.target === deleteSection) {
+                hideDeleteAccount();
+            }
+        });
+
+        // ── HAMBURGER MENU ──
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+            });
+        });
+
+        // ── COMING SOON MODAL ──
+        const modal = document.getElementById('coming-soon-modal');
+
+        function showComingSoon() {
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideComingSoon() {
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // Close on backdrop click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) hideComingSoon();
+        });
+
+        // ── SCROLL REVEAL ──
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        reveals.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
