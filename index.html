@@ -874,19 +874,25 @@
                         Get your personalized news highlights of the day in just a few minutes — perfect for listening on the go.
                     </p>
                     <div class="download-row">
+                        <!-- iOS Button (Keeps the Coming Soon popup) -->
                         <button class="dl-btn"
                             onclick="gtag('event', 'download_click', {'platform': 'app_store'}); showComingSoon();"
                             aria-label="Download on the App Store">
                             <img src="image 4.png" alt="App Store">
                         </button>
-                        <button class="dl-btn"
-                            onclick="gtag('event', 'download_click', {'platform': 'google_play'}); showComingSoon();"
-                            aria-label="Get it on Google Play">
-                            <img src="image 3.png" alt="Google Play">
-                        </button>
-                    </div>
-                </div>
-
+                        <!-- Android Button (Links directly to your live Play Store page) -->
+                        <a href="https://play.google.com/store/apps/details?id=com.audiline.app" 
+                           target="_blank" 
+                           rel="noopener" 
+                           onclick="gtag('event', 'download_click', {'platform': 'google_play'});" 
+                           aria-label="Get it on Google Play"
+                           style="text-decoration: none;">
+                            <button class="dl-btn">
+                                <img src="image 3.png" alt="Google Play">
+                            </button>
+                         </a>
+                     </div>
+               
             </div>
         </section>
 
