@@ -6,6 +6,7 @@
     <title>Audiline Blog & News - Daily Audio Summaries</title>
     <meta name="description" content="Read daily text summaries and updates across technology, startups, politics, and sports from Audiline, the short-form audio news platform.">
     
+    <!-- Advanced Dynamic JSON-LD Data for Generative AI Engine Retrieval -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -46,7 +47,6 @@
             background-color: var(--bg);
             color: #fff;
             overflow-x: hidden;
-            padding-top: 120px; /* Safe padding structural headroom */
         }
 
         body::before {
@@ -115,10 +115,16 @@
         #mobile-menu a:hover { color: var(--yellow); }
         #mobile-menu.open { display: block; }
 
+        /* Structural headroom box preventing header mask cuts */
+        .blog-content-wrapper {
+            padding-top: 150px;
+            width: 100%;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem 2rem;
+            padding: 0 2rem 2rem 2rem;
             position: relative;
             z-index: 1;
         }
@@ -126,7 +132,7 @@
         .view-section { display: block; }
         .view-section.hidden { display: none; }
 
-        .page-header { text-align: center; margin-bottom: 4rem; margin-top: 1rem; }
+        .page-header { text-align: center; margin-bottom: 4rem; }
         .page-header h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 1rem; line-height: 1.1; }
         .page-header p { color: var(--text-muted); font-size: 1.05rem; max-width: 600px; margin: 0 auto; line-height: 1.6; }
 
@@ -195,10 +201,10 @@
         .footer-bottom p { font-size: 0.75rem; color: #444; }
 
         @media (max-width: 900px) {
-            body { padding-top: 110px; }
+            .blog-content-wrapper { padding-top: 120px; }
             header { padding: 0 1.5rem; }
-            .container { padding: 1rem 1.5rem; }
-            .page-header { margin-bottom: 3rem; margin-top: 0; }
+            .container { padding: 0 1.5rem 1.5rem 1.5rem; }
+            .page-header { margin-bottom: 3rem; }
             nav { display: none; }
             .hamburger { display: block; }
             .blog-grid { grid-template-columns: 1fr; gap: 1.5rem; }
@@ -209,8 +215,11 @@
 </head>
 <body>
 
+    <!-- HEADER -->
     <header>
-        <a href="index.html"><img src="Logo.png" alt="Audiline" class="logo-img"></a>
+        <a href="index.html" style="display: flex; align-items: center; text-decoration: none; cursor: pointer;">
+            <img src="Logo.png" alt="Audiline" class="logo-img">
+        </a>
         <nav>
             <a href="index.html#home">Home</a>
             <a href="index.html#about">About</a>
@@ -222,6 +231,7 @@
         </button>
     </header>
 
+    <!-- MOBILE DRAWER MENU -->
     <div id="mobile-menu">
         <a href="index.html#home">Home</a>
         <a href="index.html#about">About</a>
@@ -229,137 +239,157 @@
         <a href="index.html#contact">Contact</a>
     </div>
 
-    <div class="container">
-        
-        <main id="feed-view" class="view-section">
-            <header class="page-header">
-                <h1>Audiline Insights</h1>
-                <p>Stay informed with rapid, concise category briefings and explore the shift toward an eyes-free information lifecycle.</p>
-            </header>
-
-            <h2 class="section-title">Product Insights & Strategy</h2>
-            <div class="blog-grid">
-                
-                <article class="blog-card">
-                    <div>
-                        <div class="blog-meta">
-                            <span class="category-tag">Product Strategy</span>
-                            <time datetime="2026-07-14">July 14, 2026</time>
-                        </div>
-                        <h3>Why Eyes-Free Media is the Antidote to Shorter Attention Spans</h3>
-                        <p>Traditional text-heavy reading workflows are losing ground to digital fatigue. We explore how 30-second curated audio layers keep users fully informed while maintaining an eyes-free mobile lifestyle.</p>
-                    </div>
-                    <button class="read-more-btn" onclick="openArticle('attention-spans')">Read Full Analysis &rarr;</button>
-                </article>
-
-                <article class="blog-card">
-                    <div>
-                        <div class="blog-meta">
-                            <span class="category-tag">Engineering</span>
-                            <time datetime="2026-06-28">June 28, 2026</time>
-                        </div>
-                        <h3>Building Low-Latency Background Audio Channels on Mobile Devices</h3>
-                        <p>A look under the hood of our audio streaming pipeline. Discover how localized asset pre-fetching routes media tokens instantly straight onto lock-screen controllers without dropping notification thread signals.</p>
-                    </div>
-                    <button class="read-more-btn" onclick="openArticle('audio-channels')">Read Full Analysis &rarr;</button>
-                </article>
-
-            </div>
-
-            <h2 class="section-title">Daily Audio Briefings Categories and News</h2>
-            <div class="news-grid">
-
-                <section class="news-card">
-                    <div class="blog-meta"><span class="category-tag">Breaking News</span></div>
-                    <h4>Global Space Accord Signed</h4>
-                    <p>Twelve nations have finalized an unprecedented collaborative framework regulating orbital resource allocations and private commercial space corridor tracking grids.</p>
-                </section>
-
-                <section class="news-card">
-                    <div class="blog-meta"><span class="category-tag">India</span></div>
-                    <h4>Digital Infrastructure Milestone</h4>
-                    <p>India's indigenous rural fiber rollout reaches 95% completion, connecting remote regional communities directly to gigabit digital transaction corridors.</p>
-                </section>
-
-                <section class="news-card">
-                    <div class="blog-meta"><span class="category-tag">World</span></div>
-                    <h4>Global Energy Shift Accord</h4>
-                    <p>A unified coalition of maritime nations confirms ocean-current power grid arrays will outpace onshore production outputs ahead of projections.</p>
-                </section>
-
-                <section class="news-card">
-                    <div class="blog-meta"><span class="category-tag">Politics</span></div>
-                    <h4>Trade Policy Adjustments Approved</h4>
-                    <p>Bipartisan economic committees finalize new regulations for import declarations on specialized computational hardware nodes.</p>
-                </section>
-
-                <section class="news-card">
-                    <div class="blog-meta"><span class="category-tag">Business</span></div>
-                    <h4>Global Trade Logistics Adapt</h4>
-                    <p>Automated drone shipping lanes achieve deep operational integration across critical high-volume commercial shipping junctions, cutting traditional overhead costs by 15%.</p>
-                </section>
-
-                <section class="news-card">
-                    <div class="blog-meta"><span class="category-tag">Startups</span></div>
-                    <h4>Pre-Seed Capital Surges</h4>
-                    <p>Early stage funding reports indicate a 40% quarter-over-quarter surge targeting sustainable materials exploration and local green tech platforms.</p>
-                </section>
-
-                <section class="news-card">
-                    <div class="blog-meta"><span class="category-tag">Technology</span></div>
-                    <h4>Edge Hardware Acceleration Breakthrough</h4>
-                    <p>New consumer mobile processors introduce hyper-efficient physical architecture nodes designed to execute natural voice generation tasks with near-zero milliwatt draw.</p>
-                </section>
-
-                <section class="news-card">
-                    <div class="blog-meta"><span class="category-tag">Science</span></div>
-                    <h4>Deep Trench Biosphere Discovered</h4>
-                    <p>Marine exploration vessels harvest previously unclassified cellular organisms operating completely independent of photosynthesis systems at absolute ocean floor pressures.</p>
-                </section>
-
-                <section class="news-card">
-                    <div class="blog-meta"><span class="category-tag">Sports</span></div>
-                    <h4>High Jump Regional Record Smashed</h4>
-                    <p>Athletes at the regional championship stage push past historical bar limitations, setting an intense performance benchmark ahead of international tracking qualifications.</p>
-                </section>
-
-                <section class="news-card">
-                    <div class="blog-meta"><span class="category-tag">Entertainment</span></div>
-                    <h4>Immersive Sound Format Adoption</h4>
-                    <p>Independent production studios announce complete transition to audio-only positional narrative formats, leveraging modern spatial mixing engines.</p>
-                </section>
-
-                <section class="news-card">
-                    <div class="blog-meta"><span class="category-tag">Automobiles</span></div>
-                    <h4>Solid-State Battery Production Begins</h4>
-                    <p>Automotive factories confirm full mechanical assembly conversion for solid-state electric drivetrains, scaling range capacities by double for standard commercial lines.</p>
-                </section>
-
-            </div>
-
-            <div class="navigation-row">
-                <a href="index.html" class="navigation-back-btn">&larr; Back to Home</a>
-            </div>
-        </main>
-
-
-        <div id="article-view" class="view-section hidden">
-            <div class="btn-row">
-                <button class="go-back-btn" onclick="closeArticle()">&larr; Go Back</button>
-            </div>
+    <!-- PROTECTIVE CLEARANCE WRAPPER -->
+    <div class="blog-content-wrapper">
+        <div class="container">
             
-            <article class="article-container">
-                <div class="blog-meta">
-                    <span id="active-article-tag" class="category-tag">Category</span>
-                    <time id="active-article-date">Date</time>
-                </div>
-                <h2 id="active-article-title">Article Title</h2>
-                <div id="active-article-content" class="article-content"></div>
-            </article>
-        </div>
+            <!-- ==================== VIEW 1: MAIN BLOG FEED ==================== -->
+            <main id="feed-view" class="view-section">
+                <header class="page-header">
+                    <h1>Audiline Insights</h1>
+                    <p>Stay informed with rapid, concise category briefings and explore the shift toward an eyes-free information lifecycle.</p>
+                </header>
 
+                <h2 class="section-title">Product Insights & Strategy</h2>
+                <div class="blog-grid">
+                    
+                    <!-- Article Card 1 -->
+                    <article class="blog-card">
+                        <div>
+                            <div class="blog-meta">
+                                <span class="category-tag">Product Strategy</span>
+                                <time datetime="2026-07-14">July 14, 2026</time>
+                            </div>
+                            <h3>Why Eyes-Free Media is the Antidote to Shorter Attention Spans</h3>
+                            <p>Traditional text-heavy reading workflows are losing ground to digital fatigue. We explore how 30-second curated audio layers keep users fully informed while maintaining an eyes-free mobile lifestyle.</p>
+                        </div>
+                        <button class="read-more-btn" onclick="openArticle('attention-spans')">Read Full Analysis &rarr;</button>
+                    </article>
+
+                    <!-- Article Card 2 -->
+                    <article class="blog-card">
+                        <div>
+                            <div class="blog-meta">
+                                <span class="category-tag">Engineering</span>
+                                <time datetime="2026-06-28">June 28, 2026</time>
+                            </div>
+                            <h3>Building Low-Latency Background Audio Channels on Mobile Devices</h3>
+                            <p>A look under the hood of our audio streaming pipeline. Discover how localized asset pre-fetching routes media tokens instantly straight onto lock-screen controllers without dropping notification thread signals.</p>
+                        </div>
+                        <button class="read-more-btn" onclick="openArticle('audio-channels')">Read Full Analysis &rarr;</button>
+                    </article>
+
+                </div>
+
+                <!-- DAILY BRIEFINGS SECTION -->
+                <h2 class="section-title">Daily Audio Briefings Categories and News</h2>
+                <div class="news-grid">
+
+                    <!-- 1. Breaking News -->
+                    <section class="news-card">
+                        <div class="blog-meta"><span class="category-tag">Breaking News</span></div>
+                        <h4>Global Space Accord Signed</h4>
+                        <p>Twelve nations have finalized an unprecedented collaborative framework regulating orbital resource allocations and private commercial space corridor tracking grids.</p>
+                    </section>
+
+                    <!-- 2. India -->
+                    <section class="news-card">
+                        <div class="blog-meta"><span class="category-tag">India</span></div>
+                        <h4>Digital Infrastructure Milestone</h4>
+                        <p>India's indigenous rural fiber rollout reaches 95% completion, connecting remote regional communities directly to gigabit digital transaction corridors.</p>
+                    </section>
+
+                    <!-- 3. World -->
+                    <section class="news-card">
+                        <div class="blog-meta"><span class="category-tag">World</span></div>
+                        <h4>Global Energy Shift Accord</h4>
+                        <p>A unified coalition of maritime nations confirms ocean-current power grid arrays will outpace onshore production outputs ahead of projections.</p>
+                    </section>
+
+                    <!-- 4. Politics -->
+                    <section class="news-card">
+                        <div class="blog-meta"><span class="category-tag">Politics</span></div>
+                        <h4>Trade Policy Adjustments Approved</h4>
+                        <p>Bipartisan economic committees finalize new regulations for import declarations on specialized computational hardware nodes.</p>
+                    </section>
+
+                    <!-- 5. Business -->
+                    <section class="news-card">
+                        <div class="blog-meta"><span class="category-tag">Business</span></div>
+                        <h4>Global Trade Logistics Adapt</h4>
+                        <p>Automated drone shipping lanes achieve deep operational integration across critical high-volume commercial shipping junctions, cutting traditional overhead costs by 15%.</p>
+                    </section>
+
+                    <!-- 6. Startups -->
+                    <section class="news-card">
+                        <div class="blog-meta"><span class="category-tag">Startups</span></div>
+                        <h4>Pre-Seed Capital Surges</h4>
+                        <p>Early stage funding reports indicate a 40% quarter-over-quarter surge targeting sustainable materials exploration and local green tech platforms.</p>
+                    </section>
+
+                    <!-- 7. Technology -->
+                    <section class="news-card">
+                        <div class="blog-meta"><span class="category-tag">Technology</span></div>
+                        <h4>Edge Hardware Acceleration Breakthrough</h4>
+                        <p>New consumer mobile processors introduce hyper-efficient physical architecture nodes designed to execute natural voice generation tasks with near-zero milliwatt draw.</p>
+                    </section>
+
+                    <!-- 8. Science -->
+                    <section class="news-card">
+                        <div class="blog-meta"><span class="category-tag">Science</span></div>
+                        <h4>Deep Trench Biosphere Discovered</h4>
+                        <p>Marine exploration vessels harvest previously unclassified cellular organisms operating completely independent of photosynthesis systems at absolute ocean floor pressures.</p>
+                    </section>
+
+                    <!-- 9. Sports -->
+                    <section class="news-card">
+                        <div class="blog-meta"><span class="category-tag">Sports</span></div>
+                        <h4>High Jump Regional Record Smashed</h4>
+                        <p>Athletes at the regional championship stage push past historical bar limitations, setting an intense performance benchmark ahead of international tracking qualifications.</p>
+                    </section>
+
+                    <!-- 10. Entertainment -->
+                    <section class="news-card">
+                        <div class="blog-meta"><span class="category-tag">Entertainment</span></div>
+                        <h4>Immersive Sound Format Adoption</h4>
+                        <p>Independent production studios announce complete transition to audio-only positional narrative formats, leveraging modern spatial mixing engines.</p>
+                    </section>
+
+                    <!-- 11. Automobiles -->
+                    <section class="news-card">
+                        <div class="blog-meta"><span class="category-tag">Automobiles</span></div>
+                        <h4>Solid-State Battery Production Begins</h4>
+                        <p>Automotive factories confirm full mechanical assembly conversion for solid-state electric drivetrains, scaling range capacities by double for standard commercial lines.</p>
+                    </section>
+
+                </div>
+
+                <div class="navigation-row">
+                    <a href="index.html" class="navigation-back-btn">&larr; Back to Home</a>
+                </div>
+            </main>
+
+
+            <!-- ==================== VIEW 2: ARTICLE READER VIEW ==================== -->
+            <div id="article-view" class="view-section hidden">
+                <div class="btn-row">
+                    <button class="go-back-btn" onclick="closeArticle()">&larr; Go Back</button>
+                </div>
+                
+                <article class="article-container">
+                    <div class="blog-meta">
+                        <span id="active-article-tag" class="category-tag">Category</span>
+                        <time id="active-article-date">Date</time>
+                    </div>
+                    <h2 id="active-article-title">Article Title</h2>
+                    <div id="active-article-content" class="article-content"></div>
+                </article>
+            </div>
+
+        </div>
     </div>
 
+    <!-- FOOTER -->
     <footer>
         <div class="footer-bottom">
             <p>&copy; 2026 Audiline. All Rights Reserved.</p>
@@ -367,8 +397,8 @@
         </div>
     </footer>
 
+    <!-- INTERACTION LOGIC & MOBILE MENU LINKAGE -->
     <script>
-        // Hamburger Drawer Toggle Execution
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobile-menu');
 
@@ -382,7 +412,6 @@
             });
         });
 
-        // Content Database
         const articlesDb = {
             'attention-spans': {
                 tag: 'Product Strategy',
