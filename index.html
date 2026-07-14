@@ -366,56 +366,32 @@
             max-width: 420px;
         }
 
-        /* ── OPTIMIZED DOWNLOAD BUTTON MATRIX ── */
+        /* Download buttons */
         .download-row {
             display: flex;
-            gap: 1rem;
+            gap: 0.875rem;
             flex-wrap: wrap;
-            margin-top: 1rem;
         }
 
         .dl-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border);
+            display: inline-block;
+            background: none;
+            border: none;
             cursor: pointer;
-            padding: 4px; /* Creates a clean structural bezel */
-            border-radius: 14px;
+            padding: 0;
+            transition: transform 0.2s, filter 0.2s;
+            border-radius: 12px;
             overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
-
-        /* The Beautiful Designer Reveal: Yellow background and micro-glow on hover */
         .dl-btn:hover {
-            transform: translateY(-4px);
-            background: var(--yellow);
-            border-color: var(--yellow);
-            box-shadow: 
-                0 10px 30px rgba(0, 0, 0, 0.5),
-                0 0 20px rgba(255, 195, 0, 0.3); /* Premium yellow aura */
+            transform: translateY(-3px);
+            filter: brightness(1.1);
         }
-
         .dl-btn img {
-            height: 46px; /* Elegant, uniform height profiles */
+            height: 52px;
             width: auto;
             display: block;
-            border-radius: 10px;
-            transition: filter 0.3s ease;
-        }
-
-        /* Inversion effect: Blends the store buttons naturally when the background flashes yellow */
-        .dl-btn:hover img {
-            filter: brightness(0.95);
-        }
-
-        @media (max-width: 900px) {
-            .download-row {
-                justify-content: center;
-            }
+            border-radius: 12px;
         }
 
         /* ── SECTION SHARED ── */
@@ -914,7 +890,7 @@
                            rel="noopener" 
                            onclick="gtag('event', 'download_click', {'platform': 'google_play'});" 
                            aria-label="Get it on Google Play"
-                           style="display: inline-block; text-decoration: none;">
+                           style="text-decoration: none;">
                             <button class="dl-btn">
                                 <img src="image 3.png" alt="Google Play">
                             </button>
