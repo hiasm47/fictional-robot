@@ -47,7 +47,7 @@
             background-color: var(--bg);
             color: #fff;
             overflow-x: hidden;
-            padding-top: 120px;
+            padding-top: 100px;
         }
 
         body::before {
@@ -65,7 +65,7 @@
             position: fixed;
             top: 0; left: 0; right: 0;
             z-index: 50;
-            padding: 0 2rem;
+            padding: 0 1.5rem;
             height: 72px;
             display: flex;
             align-items: center;
@@ -75,10 +75,10 @@
             border-bottom: 1px solid var(--border);
         }
 
-        .logo-img { height: 36px; width: auto; }
-        nav { display: flex; gap: 2.5rem; align-items: center; }
+        .logo-img { height: 32px; width: auto; }
+        nav { display: flex; gap: 1.5rem; align-items: center; }
         nav a {
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             font-weight: 600;
             letter-spacing: 0.1em;
             text-transform: uppercase;
@@ -91,81 +91,93 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 1rem 1.5rem;
             position: relative;
             z-index: 1;
         }
 
-        /* Views management styles */
         .view-section { display: block; }
         .view-section.hidden { display: none; }
 
-        .page-header { text-align: center; margin-bottom: 5rem; }
-        .page-header h1 { font-size: clamp(2.5rem, 5vw, 3.8rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 1rem; }
-        .page-header p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+        .page-header { text-align: center; margin-bottom: 3.5rem; }
+        .page-header h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 1rem; line-height: 1.1; }
+        .page-header p { color: var(--text-muted); font-size: 1rem; max-width: 600px; margin: 0 auto; line-height: 1.6; }
 
         .section-title {
-            font-size: 1.8rem;
+            font-size: clamp(1.4rem, 3vw, 1.8rem);
             font-weight: 800;
-            margin-bottom: 2rem;
+            margin-bottom: 1.75rem;
             letter-spacing: -0.02em;
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            margin-top: 4rem;
+            margin-top: 3.5rem;
+            line-height: 1.2;
         }
         .section-title::after { content: ''; flex-grow: 1; height: 1px; background: var(--border); }
 
-        /* Blog Layout */
-        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
+        /* Blog Responsive Grid Layout */
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
         .blog-card {
             background: var(--bg-2);
             border: 1px solid var(--border);
             border-radius: 20px;
-            padding: 2.5rem;
+            padding: 2rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             transition: border-color 0.3s, transform 0.3s;
         }
         .blog-card:hover { border-color: rgba(255,195,0,0.3); transform: translateY(-4px); }
-        .blog-meta { display: flex; gap: 1rem; align-items: center; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1.2rem; }
+        .blog-meta { display: flex; gap: 0.75rem; align-items: center; font-size: 0.72rem; color: var(--text-muted); margin-bottom: 1rem; flex-wrap: wrap; }
         .category-tag { background: var(--yellow-dim); color: var(--yellow); padding: 0.25rem 0.75rem; border-radius: 100px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
         
-        .blog-card h3 { font-size: 1.5rem; font-weight: 800; line-height: 1.3; margin-bottom: 1rem; letter-spacing: -0.01em; }
-        .blog-card p { color: #aaa; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; }
+        .blog-card h3 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); font-weight: 800; line-height: 1.3; margin-bottom: 0.75rem; letter-spacing: -0.01em; }
+        .blog-card p { color: #aaa; font-size: 0.92rem; line-height: 1.6; margin-bottom: 1.5rem; }
         
         .read-more-btn {
-            background: none; border: none; color: var(--yellow); font-family: inherit; font-size: 0.9rem; font-weight: 700; cursor: pointer; text-align: left; display: inline-flex; align-items: center; transition: opacity 0.2s;
+            background: none; border: none; color: var(--yellow); font-family: inherit; font-size: 0.88rem; font-weight: 700; cursor: pointer; text-align: left; display: inline-flex; align-items: center; transition: opacity 0.2s;
         }
         .read-more-btn:hover { opacity: 0.8; }
 
-        /* Category Grid */
-        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-        .news-card { background: var(--bg-3); border: 1px solid var(--border); border-radius: 16px; padding: 1.75rem; transition: border-color 0.2s; }
+        /* News Categories Mobile-Friendly Grid */
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+        .news-card { background: var(--bg-3); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; transition: border-color 0.2s; }
         .news-card:hover { border-color: rgba(255,255,255,0.12); }
-        .news-card h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; letter-spacing: -0.01em; }
+        .news-card h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.6rem; letter-spacing: -0.01em; }
         .news-card p { font-size: 0.88rem; color: #999; line-height: 1.6; }
 
-        /* Article Reader View Section */
-        .btn-row { margin-bottom: 3rem; }
-        .go-back-btn {
-            background: transparent; border: 1px solid var(--border); color: #fff; padding: 0.6rem 1.5rem; border-radius: 100px; font-family: inherit; font-weight: 600; font-size: 0.85rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; transition: background 0.2s, border-color 0.2s;
+        /* Article Reader View Section Layout */
+        .btn-row { margin-bottom: 2.5rem; }
+        .go-back-btn, .navigation-back-btn {
+            background: transparent; border: 1px solid var(--border); color: #fff; padding: 0.6rem 1.5rem; border-radius: 100px; font-family: inherit; font-weight: 600; font-size: 0.85rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; transition: background 0.2s, border-color 0.2s, color 0.2s;
+            text-decoration: none;
         }
-        .go-back-btn:hover { background: var(--bg-2); border-color: var(--yellow); color: var(--yellow); }
+        .go-back-btn:hover, .navigation-back-btn:hover { background: var(--bg-2); border-color: var(--yellow); color: var(--yellow); }
         
-        .article-container { max-width: 740px; margin: 0 auto; }
-        .article-container h2 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1.5rem; }
-        .article-content { color: #ccc; font-size: 1.1rem; line-height: 1.8; }
+        .navigation-row {
+            display: flex;
+            justify-content: center;
+            margin: 4.5rem 0 1.5rem;
+        }
+
+        .article-container { max-width: 740px; margin: 0 auto; padding: 0 0.5rem; }
+        .article-container h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 1.5rem; }
+        .article-content { color: #ccc; font-size: 1.05rem; line-height: 1.8; }
         .article-content p { margin-bottom: 1.5rem; }
 
-        footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 3rem 2rem; margin-top: 8rem; }
-        .footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        footer { background: var(--bg-2); border-top: 1px solid var(--border); padding: 2.5rem 1.5rem; margin-top: 6rem; }
+        .footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
         .footer-bottom p { font-size: 0.75rem; color: #444; }
 
-        @media (max-width: 900px) {
+        /* Adaptive Mobile Breakdown Rules */
+        @media (max-width: 768px) {
+            body { padding-top: 88px; }
             nav { display: none; }
-            .blog-grid { grid-template-columns: 1fr; }
+            .page-header { margin-bottom: 2.5rem; }
+            .blog-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+            .news-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .footer-bottom { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
@@ -223,7 +235,7 @@
             </div>
 
             <!-- DAILY BRIEFINGS SECTION -->
-            <h2 class="section-title">Daily Audio Briefings Categories</h2>
+            <h2 class="section-title">Daily Audio Briefings Categories and News</h2>
             <div class="news-grid">
 
                 <!-- 1. Breaking News -->
@@ -304,6 +316,11 @@
                 </section>
 
             </div>
+
+            <!-- BACK TO HOME INTERACTIVE ZONE FOR INSTANT RETURN NAVIGATION -->
+            <div class="navigation-row">
+                <a href="index.html" class="navigation-back-btn">&larr; Back to Home</a>
+            </div>
         </main>
 
 
@@ -338,7 +355,6 @@
 
     <!-- INTERACTION LOGIC CONTROL LINKAGE -->
     <script>
-        // Article Database Pool - written completely in readable flat strings for optimal AI crawler scraping maps
         const articlesDb = {
             'attention-spans': {
                 tag: 'Product Strategy',
@@ -366,13 +382,11 @@
             const article = articlesDb[id];
             if (!article) return;
 
-            // Update DOM content elements
             document.getElementById('active-article-tag').innerText = article.tag;
             document.getElementById('active-article-date').innerText = article.date;
             document.getElementById('active-article-title').innerText = article.title;
             document.getElementById('active-article-content').innerHTML = article.content;
 
-            // Transition UI displays cleanly
             document.getElementById('feed-view').classList.add('hidden');
             document.getElementById('article-view').classList.remove('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
