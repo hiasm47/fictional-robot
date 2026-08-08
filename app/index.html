@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get Audiline</title>
+<!--
+  audiline.com/app — the one link both apps share.
+
+  The Audiline apps put this URL in every share, instead of a store link. A shared link is
+  text the moment it reaches someone's chat, so the app that produced it cannot know what the
+  recipient is running: a store chosen by the *sender* is wrong for every cross-platform
+  share. Only the device that opens it knows, and this page is the only thing that runs there.
+
+  The contract lives in the app repo at native/shared/store-link.md. Changing the destinations
+  here without updating that file will leave the two disagreeing.
+
+  Three details below are deliberate:
+
+  - location.replace, not location.href. Replace leaves no history entry, so Back from the
+    store returns to the chat the link came from. With href, Back lands here and redirects
+    again — an inescapable loop.
+
+  - The <noscript> block offers both stores. Messaging apps open links in in-app browsers,
+    which is exactly where scripts are most likely to be blocked, so a script-only redirect
+    is a dead end for the audience this page exists for.
+
+  - The iPadOS check. iPadOS 13+ reports itself as a Mac in the user agent; without the
+    touch-point test every iPad falls through to the desktop branch.
+-->
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://www.audiline.com/">
+<style>
+  :root { color-scheme: dark; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    background: #000000;
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    box-sizing: border-box;
+  }
+  h1 { font-size: 1.375rem; font-weight: 700; margin: 0; }
+  p { margin: 0; color: #a1a1a1; font-size: 0.9375rem; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
+  a {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 999px;
+    background: #ffc300;
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+  <h1>Audiline</h1>
+  <!--
+    Shown only while the redirect runs, and permanently to anyone it cannot place — desktop
+    visitors and blocked-script browsers both land here rather than on a blank page.
+  -->
+  <p>Taking you to your app store&hellip;</p>
+  <div class="links">
+    <a href="https://apps.apple.com/app/id6799126995">iPhone</a>
+    <a href="https://play.google.com/store/apps/details?id=com.audiline.app">Android</a>
+  </div>
+
+<script>
+  (function () {
+    var ua = navigator.userAgent || "";
+    // iPadOS 13+ identifies as a Mac. maxTouchPoints is what separates a real iPad from
+    // desktop Safari; without it every iPad lands on the desktop branch.
+    var isIOS = /iPhone|iPad|iPod/.test(ua) ||
+                (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+    var isAndroid = /Android/.test(ua);
+
+    if (!isIOS && !isAndroid) return;   // Desktop keeps the two buttons above.
+
+    location.replace(isIOS
+      ? "https://apps.apple.com/app/id6799126995"
+      : "https://play.google.com/store/apps/details?id=com.audiline.app");
+  })();
+</script>
+</body>
+</html>
