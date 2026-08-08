@@ -30,6 +30,14 @@
 -->
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://www.audiline.com/">
+<!--
+  Absolute paths, not relative. This page lives at /app/, so href="Logo.png" would resolve to
+  /app/Logo.png and 404 — the one page on the site where the relative form actually breaks.
+  Worth having despite noindex: the fallback below is a page desktop visitors do look at.
+-->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="192x192" href="/Logo.png">
+<link rel="apple-touch-icon" href="/Logo.png">
 <style>
   :root { color-scheme: dark; }
   body {

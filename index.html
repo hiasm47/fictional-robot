@@ -48,14 +48,26 @@
     }
     </script>
 
-    <!-- Desktop Browser Tabs (Downscales cleanly) -->
-    <link rel="icon" type="image/png" sizes="32x32" href="Logo.png">
+    <!--
+      Root .ico first. Google looks for /favicon.ico whatever is declared here, and so do
+      crawlers, feed readers and older browsers that never parse these tags at all. It was
+      404ing, which is the likeliest reason no icon appeared beside the search result.
+    -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
 
-    <!-- Google Search & Mobile High-DPI (Uses full resolution) -->
-    <link rel="icon" type="image/png" sizes="192x192" href="Logo.png">
+    <!--
+      Google Search and mobile high-DPI. The size is stated honestly: Logo.png is 192x192.
+      A line here previously declared the same file as sizes="32x32", which was untrue — and
+      Google requires a favicon to be a square multiple of 48px, so that entry offered it a
+      candidate guaranteed to be rejected. Browsers downscale 192 for tabs perfectly well.
+
+      Paths are absolute. Relative hrefs resolve against the current directory, so /app/ would
+      have looked for /app/Logo.png and found nothing.
+    -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/Logo.png">
 
     <!-- Apple iOS Home Screen & Safari -->
-    <link rel="apple-touch-icon" href="Logo.png">
+    <link rel="apple-touch-icon" href="/Logo.png">
 
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -214,6 +226,23 @@
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        /*
+          Wraps .phone so the mockup is tappable. `display: block` matters — an inline anchor
+          would add line-box leading under the phone and shift the hero. It is otherwise
+          styleless on purpose, so the phone looks exactly as it did before it became a link.
+        */
+        .phone-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            border-radius: 44px;
+        }
+
+        .phone-link:focus-visible {
+            outline: 2px solid var(--accent, #ffc300);
+            outline-offset: 8px;
         }
 
         .phone {
@@ -855,6 +884,17 @@
 
                 <!-- Phone -->
                 <div class="phone-wrap">
+                    <!--
+                      The phone mockup is the largest thing on the page and people try to tap
+                      it, so it goes to /app — the same device-aware link the apps share, not a
+                      store URL, so a desktop visitor is not sent to a store they cannot use.
+
+                      An anchor between .phone-wrap and .phone is deliberately safe: the wrap
+                      is a flex centring container so the anchor simply becomes the flex item,
+                      and .phone keeps its own `position: relative`, so the absolutely
+                      positioned badges still anchor to the phone rather than to the link.
+                    -->
+                    <a class="phone-link" href="/app" aria-label="Get the Audiline app">
                     <div class="phone">
                         <div class="phone-notch"></div>
                         <div class="phone-screen">
@@ -871,6 +911,7 @@
                             Audio-First
                         </div>
                     </div>
+                    </a>
                 </div>
 
                 <!-- Text -->
