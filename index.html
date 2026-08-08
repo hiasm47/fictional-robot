@@ -48,14 +48,26 @@
     }
     </script>
 
-    <!-- Desktop Browser Tabs (Downscales cleanly) -->
-    <link rel="icon" type="image/png" sizes="32x32" href="Logo.png">
+    <!--
+      Root .ico first. Google looks for /favicon.ico whatever is declared here, and so do
+      crawlers, feed readers and older browsers that never parse these tags at all. It was
+      404ing, which is the likeliest reason no icon appeared beside the search result.
+    -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
 
-    <!-- Google Search & Mobile High-DPI (Uses full resolution) -->
-    <link rel="icon" type="image/png" sizes="192x192" href="Logo.png">
+    <!--
+      Google Search and mobile high-DPI. The size is stated honestly: Logo.png is 192x192.
+      A line here previously declared the same file as sizes="32x32", which was untrue — and
+      Google requires a favicon to be a square multiple of 48px, so that entry offered it a
+      candidate guaranteed to be rejected. Browsers downscale 192 for tabs perfectly well.
+
+      Paths are absolute. Relative hrefs resolve against the current directory, so /app/ would
+      have looked for /app/Logo.png and found nothing.
+    -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/Logo.png">
 
     <!-- Apple iOS Home Screen & Safari -->
-    <link rel="apple-touch-icon" href="Logo.png">
+    <link rel="apple-touch-icon" href="/Logo.png">
 
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
