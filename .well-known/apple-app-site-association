@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["VMRGRCHF99.com.audiline.app"],
+        "components": [
+          { "/": "/s/*", "comment": "Story links — audiline app repo, native/shared/deep-links.md" }
+        ]
+      }
+    ]
+  }
+}
