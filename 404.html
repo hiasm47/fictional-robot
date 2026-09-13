@@ -9,12 +9,19 @@
   https://www.audiline.com/s/<id>. The contract lives in the app repo at
   native/shared/deep-links.md.
 
-  A phone with Audiline installed never loads this page for a story link: iOS (Universal Links,
-  /.well-known/apple-app-site-association) and Android (App Links, /.well-known/assetlinks.json)
-  hand the link straight to the app. So this page is reached only when that did not happen:
-  the app is not installed, or the link was opened somewhere that does not pass links to apps
-  (some in-app browsers, a desktop). That is why it offers both buttons and redirects nowhere
-  by itself — the listener may well have the app, in a browser that just did not use it.
+  The link is dynamic:
+  - App installed: the phone never loads this page. iOS (Universal Links,
+    /.well-known/apple-app-site-association) and Android (App Links,
+    /.well-known/assetlinks.json) hand the link straight to the app, which opens the story.
+  - App not installed: this page loads and sends the phone to its store at once.
+      Android — an intent: URL whose fallback is Play. If the app *is* installed but the link
+               was opened somewhere that skips App Links (some in-app browsers), Chrome opens
+               the app on the story instead; otherwise it lands on Play.
+      iPhone  — the App Store. (A custom-scheme attempt first would make Safari show "address is
+               invalid" to everyone without the app, and Universal Links already cover the
+               installed case.)
+      Desktop — stays here, with both buttons.
+  location.replace, as on /app, so Back from the store returns to the chat, not to a redirect.
 
   Every other missing path gets an ordinary "not found".
 -->
@@ -61,7 +68,7 @@
 
   <section id="story" hidden>
     <h1>Open this story in Audiline</h1>
-    <p style="margin-top:0.5rem">Verified audio news. If you have the app, it opens right on the story.</p>
+    <p style="margin-top:0.5rem">Verified audio news. Taking you to the app&hellip;</p>
     <div class="links" style="margin: 1.5rem auto 0">
       <a id="open" href="#">Open in Audiline</a>
       <a id="get" class="secondary" href="/app">Get the app</a>
@@ -88,15 +95,21 @@
     document.title = "Open in Audiline";
 
     var ua = navigator.userAgent || "";
+    // iPadOS 13+ identifies as a Mac; the touch-point check is what separates a real iPad.
+    var isIOS = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
     var isAndroid = /Android/.test(ua);
-    var play = "https://play.google.com/store/apps/details?id=com.audiline.app";
+    var play = "https://play.google.com/store/apps/details?id=com.audiline.app&referrer=" +
+      encodeURIComponent("story=" + id);
+    var appStore = "https://apps.apple.com/app/id6799126995";
+    var androidIntent = "intent://s/" + id + "#Intent;scheme=audiline;package=com.audiline.app;" +
+      "S.browser_fallback_url=" + encodeURIComponent(play) + ";end";
 
-    // Android: an intent: URL, so Chrome opens the app if it is installed and goes to Play if
-    // it is not. Everywhere else: the app's own scheme — on iOS, Safari offers to open it.
-    document.getElementById("open").href = isAndroid
-      ? "intent://s/" + id + "#Intent;scheme=audiline;package=com.audiline.app;S.browser_fallback_url=" +
-          encodeURIComponent(play) + ";end"
-      : "audiline://s/" + id;
+    // The buttons stay usable if the redirect is blocked or cancelled.
+    document.getElementById("open").href = isAndroid ? androidIntent : "audiline://s/" + id;
+    document.getElementById("get").href = isIOS ? appStore : isAndroid ? play : "/app";
+
+    if (isAndroid) location.replace(androidIntent);
+    else if (isIOS) location.replace(appStore);
   })();
 </script>
 </body>
