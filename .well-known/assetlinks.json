@@ -1,0 +1,14 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.audiline.app",
+      "sha256_cert_fingerprints": [
+        "30:0E:AA:34:30:E7:75:C0:32:A8:A4:99:43:ED:01:12:05:25:D2:1B:34:E8:40:C4:A7:1E:01:CA:4A:21:3D:36",
+        "FC:0F:BC:04:2B:CF:74:5F:B4:1C:DA:0E:DA:94:13:05:BB:0F:45:D5:F4:70:77:4B:67:D0:B2:32:1A:42:58:7A",
+        "5E:97:F2:15:EA:BB:38:9F:3F:80:A9:EA:74:69:07:00:F6:07:9A:19:AE:AB:2F:0D:F5:60:52:C4:0C:BA:A7:AA"
+      ]
+    }
+  }
+]

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audiline</title>
+<!--
+  GitHub Pages serves this for every path that has no file — which includes every story link,
+  https://www.audiline.com/s/<id>. The contract lives in the app repo at
+  native/shared/deep-links.md.
+
+  A phone with Audiline installed never loads this page for a story link: iOS (Universal Links,
+  /.well-known/apple-app-site-association) and Android (App Links, /.well-known/assetlinks.json)
+  hand the link straight to the app. So this page is reached only when that did not happen:
+  the app is not installed, or the link was opened somewhere that does not pass links to apps
+  (some in-app browsers, a desktop). That is why it offers both buttons and redirects nowhere
+  by itself — the listener may well have the app, in a browser that just did not use it.
+
+  Every other missing path gets an ordinary "not found".
+-->
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="192x192" href="/Logo.png">
+<link rel="apple-touch-icon" href="/Logo.png">
+<style>
+  :root { color-scheme: dark; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    background: #000000;
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    box-sizing: border-box;
+  }
+  img { width: 72px; height: 72px; border-radius: 16px; }
+  h1 { font-size: 1.375rem; font-weight: 700; margin: 0; }
+  p { margin: 0; color: #a1a1a1; font-size: 0.9375rem; max-width: 22rem; }
+  .links { display: flex; flex-direction: column; gap: 0.75rem; width: 100%; max-width: 18rem; }
+  a {
+    display: block;
+    padding: 0.875rem 1.5rem;
+    border-radius: 999px;
+    background: #ffc300;
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  a.secondary { background: transparent; color: #ffffff; border: 1px solid #444446; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+  <img src="/Logo.png" alt="">
+
+  <section id="story" hidden>
+    <h1>Open this story in Audiline</h1>
+    <p style="margin-top:0.5rem">Verified audio news. If you have the app, it opens right on the story.</p>
+    <div class="links" style="margin: 1.5rem auto 0">
+      <a id="open" href="#">Open in Audiline</a>
+      <a id="get" class="secondary" href="/app">Get the app</a>
+    </div>
+  </section>
+
+  <section id="missing">
+    <h1>Page not found</h1>
+    <p style="margin-top:0.5rem">That page doesn’t exist.</p>
+    <div class="links" style="margin: 1.5rem auto 0">
+      <a href="/">Go to audiline.com</a>
+    </div>
+  </section>
+
+<script>
+  (function () {
+    // Same id rule as the apps' StoryLink: 1-64 letters, digits and "-".
+    var match = location.pathname.match(/^\/s\/([A-Za-z0-9-]{1,64})\/?$/);
+    if (!match) return;
+    var id = match[1];
+
+    document.getElementById("missing").hidden = true;
+    document.getElementById("story").hidden = false;
+    document.title = "Open in Audiline";
+
+    var ua = navigator.userAgent || "";
+    var isAndroid = /Android/.test(ua);
+    var play = "https://play.google.com/store/apps/details?id=com.audiline.app";
+
+    // Android: an intent: URL, so Chrome opens the app if it is installed and goes to Play if
+    // it is not. Everywhere else: the app's own scheme — on iOS, Safari offers to open it.
+    document.getElementById("open").href = isAndroid
+      ? "intent://s/" + id + "#Intent;scheme=audiline;package=com.audiline.app;S.browser_fallback_url=" +
+          encodeURIComponent(play) + ";end"
+      : "audiline://s/" + id;
+  })();
+</script>
+</body>
+</html>
