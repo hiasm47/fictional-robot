@@ -14,9 +14,11 @@
     /.well-known/apple-app-site-association) and Android (App Links,
     /.well-known/assetlinks.json) hand the link straight to the app, which opens the story.
   - App not installed: this page loads and sends the phone to its store at once.
-      Android — an intent: URL whose fallback is Play. If the app *is* installed but the link
-               was opened somewhere that skips App Links (some in-app browsers), Chrome opens
-               the app on the story instead; otherwise it lands on Play.
+      Android — Play. Verified App Links already opened the app if it is installed, so reaching
+               this page means it is not. Not an intent: redirect: Chrome refuses to follow
+               one that a page starts by itself without a tap (tested on Android 16, Chrome), so
+               the page sat here. The intent: URL stays on the Open button, where the tap makes
+               it work — for an in-app browser that skipped App Links on a phone that has the app.
       iPhone  — the App Store. (A custom-scheme attempt first would make Safari show "address is
                invalid" to everyone without the app, and Universal Links already cover the
                installed case.)
@@ -108,7 +110,7 @@
     document.getElementById("open").href = isAndroid ? androidIntent : "audiline://s/" + id;
     document.getElementById("get").href = isIOS ? appStore : isAndroid ? play : "/app";
 
-    if (isAndroid) location.replace(androidIntent);
+    if (isAndroid) location.replace(play);
     else if (isIOS) location.replace(appStore);
   })();
 </script>
