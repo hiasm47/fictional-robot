@@ -17,6 +17,20 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- Blog Posts -->
+  <url>
+    <loc>https://www.audiline.com/blog/attention-spans.html</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.audiline.com/blog/audio-channels.html</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
   <!-- Legal & Support Pages -->
   <url>
     <loc>https://www.audiline.com/privacy-policy.html</loc>

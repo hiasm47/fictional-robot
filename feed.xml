@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Audiline Blog</title>
+  <subtitle>Product strategy and engineering notes from Audiline, the short-form audio news app.</subtitle>
+  <link href="https://www.audiline.com/feed.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://www.audiline.com/blog.html" rel="alternate" type="text/html"/>
+  <id>https://www.audiline.com/</id>
+  <updated>2026-07-14T00:00:00Z</updated>
+  <icon>https://www.audiline.com/favicon.ico</icon>
+  <logo>https://www.audiline.com/Logo.png</logo>
+
+  <entry>
+    <title>Why Eyes-Free Media is the Antidote to Shorter Attention Spans</title>
+    <link href="https://www.audiline.com/blog/attention-spans.html" rel="alternate" type="text/html"/>
+    <id>https://www.audiline.com/blog/attention-spans.html</id>
+    <published>2026-07-14T00:00:00Z</published>
+    <updated>2026-07-14T00:00:00Z</updated>
+    <author><name>Audiline</name></author>
+    <category term="Product Strategy"/>
+    <summary>Traditional text-heavy reading workflows are losing ground to digital fatigue. We explore how 30-second curated audio layers keep users fully informed while maintaining an eyes-free mobile lifestyle.</summary>
+    <content type="html">&lt;p&gt;In our modern ecosystem, users are bombarded with persistent notifications, endless scrolling metrics, and demanding visual walls of text. This overwhelming flow of media leads directly to digital screen fatigue, causing baseline reading habits and engagement windows to shorten globally.&lt;/p&gt;
+&lt;p&gt;Audiline introduces a clear alternative by converting daily updates into bite-sized, 30-second audio summaries. Instead of scanning through crowded editorial layouts, listeners catch up completely hands-free while walking, commuting, or keeping their eyes focused on their surroundings.&lt;/p&gt;
+&lt;p&gt;By moving from visual dependency to curated sound layers, we create a habit-forming routine that protects mental focus while delivering immediate news comprehension. It is a streamlined strategy built specifically for a mobile society on the move.&lt;/p&gt;</content>
+  </entry>
+
+  <entry>
+    <title>Building Low-Latency Background Audio Channels on Mobile Devices</title>
+    <link href="https://www.audiline.com/blog/audio-channels.html" rel="alternate" type="text/html"/>
+    <id>https://www.audiline.com/blog/audio-channels.html</id>
+    <published>2026-06-28T00:00:00Z</published>
+    <updated>2026-06-28T00:00:00Z</updated>
+    <author><name>Audiline</name></author>
+    <category term="Engineering"/>
+    <summary>A look under the hood of our audio streaming pipeline. Discover how localized asset pre-fetching routes media tokens instantly straight onto lock-screen controllers without dropping notification thread signals.</summary>
+    <content type="html">&lt;p&gt;Creating a highly accurate audio-first streaming infrastructure requires minimizing playback delays. Traditional media apps often suffer from long network buffering routines, forcing users to stare at static loading wheels before their music or track starts playing.&lt;/p&gt;
+&lt;p&gt;Our core application pipeline completely eliminates this friction using specialized asset pre-fetching frameworks. When updates clear our ingestion database logs, small notifications silently wake the app in the background, caching files directly before the phone's display illuminates.&lt;/p&gt;
+&lt;p&gt;This technical handshake ensures that the second a user hits the play button on their lock screen, the audio initiates instantly. Keeping our processes clear of heavy background frameworks keeps memory allocation light while maintaining real-time reliability.&lt;/p&gt;</content>
+  </entry>
+</feed>

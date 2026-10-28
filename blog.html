@@ -25,6 +25,7 @@
     }
     </script>
 
+    <link rel="alternate" type="application/atom+xml" title="Audiline Blog Feed" href="https://www.audiline.com/feed.xml">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="192x192" href="/Logo.png">
     <link rel="apple-touch-icon" href="/Logo.png">
@@ -170,7 +171,7 @@
         .blog-card p { color: #aaa; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; }
         
         .read-more-btn {
-            background: none; border: none; color: var(--yellow); font-family: inherit; font-size: 0.9rem; font-weight: 700; cursor: pointer; text-align: left; display: inline-flex; align-items: center; transition: opacity 0.2s;
+            background: none; border: none; color: var(--yellow); font-family: inherit; font-size: 0.9rem; font-weight: 700; cursor: pointer; text-align: left; display: inline-flex; align-items: center; transition: opacity 0.2s; text-decoration: none;
         }
         .read-more-btn:hover { opacity: 0.8; }
 
@@ -262,7 +263,7 @@
                             <h3>Why Eyes-Free Media is the Antidote to Shorter Attention Spans</h3>
                             <p>Traditional text-heavy reading workflows are losing ground to digital fatigue. We explore how 30-second curated audio layers keep users fully informed while maintaining an eyes-free mobile lifestyle.</p>
                         </div>
-                        <button class="read-more-btn" onclick="openArticle('attention-spans')">Read Full Analysis &rarr;</button>
+                        <a class="read-more-btn" href="blog/attention-spans.html">Read Full Analysis &rarr;</a>
                     </article>
 
                     <!-- Article Card 2 -->
@@ -275,7 +276,7 @@
                             <h3>Building Low-Latency Background Audio Channels on Mobile Devices</h3>
                             <p>A look under the hood of our audio streaming pipeline. Discover how localized asset pre-fetching routes media tokens instantly straight onto lock-screen controllers without dropping notification thread signals.</p>
                         </div>
-                        <button class="read-more-btn" onclick="openArticle('audio-channels')">Read Full Analysis &rarr;</button>
+                        <a class="read-more-btn" href="blog/audio-channels.html">Read Full Analysis &rarr;</a>
                     </article>
 
                 </div>
@@ -369,22 +370,6 @@
             </main>
 
 
-            <!-- ==================== VIEW 2: ARTICLE READER VIEW ==================== -->
-            <div id="article-view" class="view-section hidden">
-                <div class="btn-row">
-                    <button class="go-back-btn" onclick="closeArticle()">&larr; Go Back</button>
-                </div>
-                
-                <article class="article-container">
-                    <div class="blog-meta">
-                        <span id="active-article-tag" class="category-tag">Category</span>
-                        <time id="active-article-date">Date</time>
-                    </div>
-                    <h2 id="active-article-title">Article Title</h2>
-                    <div id="active-article-content" class="article-content"></div>
-                </article>
-            </div>
-
         </div>
     </div>
 
@@ -410,49 +395,6 @@
                 mobileMenu.classList.remove('open');
             });
         });
-
-        const articlesDb = {
-            'attention-spans': {
-                tag: 'Product Strategy',
-                date: 'July 14, 2026',
-                title: 'Why Eyes-Free Media is the Antidote to Shorter Attention Spans',
-                content: `
-                    <p>In our modern ecosystem, users are bombarded with persistent notifications, endless scrolling metrics, and demanding visual walls of text. This overwhelming flow of media leads directly to digital screen fatigue, causing baseline reading habits and engagement windows to shorten globally.</p>
-                    <p>Audiline introduces a clear alternative by converting daily updates into bite-sized, 30-second audio summaries. Instead of scanning through crowded editorial layouts, listeners catch up completely hands-free while walking, commuting, or keeping their eyes focused on their surroundings.</p>
-                    <p>By moving from visual dependency to curated sound layers, we create a habit-forming routine that protects mental focus while delivering immediate news comprehension. It is a streamlined strategy built specifically for a mobile society on the move.</p>
-                `
-            },
-            'audio-channels': {
-                tag: 'Engineering',
-                date: 'June 28, 2026',
-                title: 'Building Low-Latency Background Audio Channels on Mobile Devices',
-                content: `
-                    <p>Creating a highly accurate audio-first streaming infrastructure requires minimizing playback delays. Traditional media apps often suffer from long network buffering routines, forcing users to stare at static loading wheels before their music or track starts playing.</p>
-                    <p>Our core application pipeline completely eliminates this friction using specialized asset pre-fetching frameworks. When updates clear our ingestion database logs, small notifications silently wake the app in the background, caching files directly before the phone's display illuminates.</p>
-                    <p>This technical handshake ensures that the second a user hits the play button on their lock screen, the audio initiates instantly. Keeping our processes clear of heavy background frameworks keeps memory allocation light while maintaining real-time reliability.</p>
-                `
-            }
-        };
-
-        function openArticle(id) {
-            const article = articlesDb[id];
-            if (!article) return;
-
-            document.getElementById('active-article-tag').innerText = article.tag;
-            document.getElementById('active-article-date').innerText = article.date;
-            document.getElementById('active-article-title').innerText = article.title;
-            document.getElementById('active-article-content').innerHTML = article.content;
-
-            document.getElementById('feed-view').classList.add('hidden');
-            document.getElementById('article-view').classList.remove('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function closeArticle() {
-            document.getElementById('article-view').classList.add('hidden');
-            document.getElementById('feed-view').classList.remove('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
     </script>
 </body>
 </html>
