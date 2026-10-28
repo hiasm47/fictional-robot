@@ -89,6 +89,51 @@
             "Wear OS and Apple Watch companion remotes"
           ],
           "url": "https://www.audiline.com/"
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Is Audiline free to use?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Audiline is free to download on iOS and Android, with free personalized news highlights."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What platforms does Audiline support?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Android and iPhone/iPad, plus Android Auto, Apple CarPlay, Wear OS and Apple Watch companions."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does Audiline personalize my news?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "You pick categories during onboarding, and Audiline builds a Daily Brief and category albums from those choices."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I save a story to listen to later?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Bookmarks save any story to revisit later, with an offline fallback if a saved story can't be reached."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I delete my Audiline account?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Email support@audiline.com and we'll remove all data associated with your account."
+              }
+            }
+          ]
         }
       ]
     }
@@ -626,6 +671,49 @@
             margin: 0 !important;
         }
 
+        /* ── FAQ ── */
+        #faq {
+            padding: 8rem 2rem;
+            background: var(--bg-2);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .faq-inner { max-width: 800px; margin: 0 auto; }
+        .faq-list {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .faq-item {
+            background: var(--bg-3);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.25rem 1.5rem;
+        }
+        .faq-item summary {
+            cursor: pointer;
+            font-weight: 700;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after {
+            content: '+';
+            color: var(--yellow);
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        .faq-item[open] summary::after { content: '\2212'; }
+        .faq-item p {
+            margin-top: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
         /* ── CONTACT ── */
         #contact {
             padding: 10rem 2rem;
@@ -933,6 +1021,7 @@
             <a href="#home">Home</a>
             <a href="#features">Features</a>
             <a href="#about">About</a>
+            <a href="#faq">FAQ</a>
             <a href="blog.html">Blog & News</a>
             <a href="#contact">Contact</a>
         </nav>
@@ -946,6 +1035,7 @@
         <a href="#home">Home</a>
         <a href="#features">Features</a>
         <a href="#about">About</a>
+        <a href="#faq">FAQ</a>
         <a href="blog.html">Blog & News</a>
         <a href="#contact">Contact</a>
     </div>
@@ -1127,6 +1217,36 @@
                     </div>
                 </div>
 
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq">
+            <div class="faq-inner">
+                <div class="section-label reveal">Common Questions</div>
+                <h2 class="section-title reveal">Frequently asked questions</h2>
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary>Is Audiline free to use?</summary>
+                        <p>Yes. Audiline is free to download on iOS and Android, with free personalized news highlights.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>What platforms does Audiline support?</summary>
+                        <p>Android and iPhone/iPad, plus Android Auto, Apple CarPlay, Wear OS and Apple Watch companions.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>How does Audiline personalize my news?</summary>
+                        <p>You pick categories during onboarding, and Audiline builds a Daily Brief and category albums from those choices.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Can I save a story to listen to later?</summary>
+                        <p>Yes. Bookmarks save any story to revisit later, with an offline fallback if a saved story can't be reached.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>How do I delete my Audiline account?</summary>
+                        <p>Email <a href="mailto:support@audiline.com" style="color:var(--yellow);">support@audiline.com</a> and we'll remove all data associated with your account.</p>
+                    </details>
+                </div>
             </div>
         </section>
 
