@@ -24,6 +24,13 @@
 - Apple CarPlay integration: category browser and system Now Playing controls
 - Wear OS and Apple Watch companion remotes for the phone's playback queue
 
+## Blog
+
+- [Blog index](https://www.audiline.com/blog.html)
+- [Why Eyes-Free Media is the Antidote to Shorter Attention Spans](https://www.audiline.com/blog/attention-spans.html)
+- [Building Low-Latency Background Audio Channels on Mobile Devices](https://www.audiline.com/blog/audio-channels.html)
+- [Atom feed](https://www.audiline.com/feed.xml)
+
 ## Support
 
 - [Contact](mailto:support@audiline.com)
