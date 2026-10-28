@@ -1349,6 +1349,42 @@
         }, { threshold: 0.1 });
 
         reveals.forEach(el => observer.observe(el));
+
+        // ── WEBMCP (feature-detected, no-op where unsupported) ──
+        // Exposes two real page actions as tools for the WebMCP draft
+        // (document.modelContext). Chrome gates this behind an origin trial —
+        // without a trial token registered for this domain, `document.modelContext`
+        // simply doesn't exist yet in trial-gated Chrome builds, so this silently
+        // does nothing there until that token is added separately.
+        (function () {
+            var ctx = (typeof document !== 'undefined' && document.modelContext) ||
+                       (typeof navigator !== 'undefined' && navigator.modelContext);
+            if (!ctx || typeof ctx.registerTool !== 'function') return;
+
+            ctx.registerTool({
+                name: 'open_app_store_listing',
+                description: "Return Audiline's download links for iOS (App Store) and Android (Google Play).",
+                inputSchema: { type: 'object', properties: {}, additionalProperties: false },
+                async execute() {
+                    return {
+                        content: [{
+                            type: 'text',
+                            text: 'iOS: https://apps.apple.com/us/app/audiline-short-audio-news/id6799126995\n' +
+                                  'Android: https://play.google.com/store/apps/details?id=com.audiline.app'
+                        }]
+                    };
+                }
+            });
+
+            ctx.registerTool({
+                name: 'get_support_contact',
+                description: "Return Audiline's support email address for questions, feedback or account deletion requests.",
+                inputSchema: { type: 'object', properties: {}, additionalProperties: false },
+                async execute() {
+                    return { content: [{ type: 'text', text: 'support@audiline.com' }] };
+                }
+            });
+        })();
     </script>
 </body>
 </html>
