@@ -507,6 +507,32 @@
             margin-bottom: 1.5rem;
         }
 
+        /* ── FEATURES ── */
+        #features {
+            padding: 8rem 2rem;
+        }
+        .features-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .features-sub {
+            color: var(--text-muted);
+            max-width: 640px;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+        @media (max-width: 900px) {
+            .features-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+            .features-grid { grid-template-columns: 1fr; }
+        }
+
         /* ── ABOUT ── */
         #about {
             padding: 10rem 2rem;
@@ -904,6 +930,7 @@
         </a>
         <nav>
             <a href="#home">Home</a>
+            <a href="#features">Features</a>
             <a href="#about">About</a>
             <a href="blog.html">Blog & News</a>
             <a href="#contact">Contact</a>
@@ -916,6 +943,7 @@
     <!-- MOBILE MENU -->
     <div id="mobile-menu">
         <a href="#home">Home</a>
+        <a href="#features">Features</a>
         <a href="#about">About</a>
         <a href="blog.html">Blog & News</a>
         <a href="#contact">Contact</a>
@@ -996,6 +1024,60 @@
                          </a>
                      </div>
                
+            </div>
+        </section>
+
+        <!-- FEATURES -->
+        <section id="features">
+            <div class="features-inner">
+                <div class="section-label reveal">Audio News, Done Right</div>
+                <h2 class="section-title reveal">Everything you need from an audio news app</h2>
+                <p class="features-sub reveal">
+                    Audiline turns short, verified news stories into one continuous audio news
+                    briefing — personalized by category and synced across your phone, car and watch.
+                </p>
+                <div class="features-grid">
+                    <div class="feature-card reveal">
+                        <div class="feature-icon">🎙️</div>
+                        <h3>Personalized Daily Brief</h3>
+                        <p>A rotating audio news mix built from the categories you pick, so every brief is yours.</p>
+                    </div>
+                    <div class="feature-card reveal">
+                        <div class="feature-icon">📻</div>
+                        <h3>Continuous Category Albums</h3>
+                        <p>Stories play back-to-back with a chime between them, like a real broadcast — not a shuffled playlist.</p>
+                    </div>
+                    <div class="feature-card reveal">
+                        <div class="feature-icon">🔎</div>
+                        <h3>Search Every Story</h3>
+                        <p>Keyword search across everything Audiline has ever published, ranked by matching phrases.</p>
+                    </div>
+                    <div class="feature-card reveal">
+                        <div class="feature-icon">📖</div>
+                        <h3>Read-Along Mode</h3>
+                        <p>A synced on-screen transcript follows the audio, so you can read along or skim back.</p>
+                    </div>
+                    <div class="feature-card reveal">
+                        <div class="feature-icon">🔖</div>
+                        <h3>Bookmarks</h3>
+                        <p>Save any story and come back to it later, even if you're offline.</p>
+                    </div>
+                    <div class="feature-card reveal">
+                        <div class="feature-icon">🔊</div>
+                        <h3>Background & Lock-Screen Playback</h3>
+                        <p>Keeps playing with the screen off, with controls on your lock screen, headset and Bluetooth devices.</p>
+                    </div>
+                    <div class="feature-card reveal">
+                        <div class="feature-icon">🚗</div>
+                        <h3>Android Auto & Apple CarPlay</h3>
+                        <p>Browse categories and start a full audio news album hands-free from your car's own screen.</p>
+                    </div>
+                    <div class="feature-card reveal">
+                        <div class="feature-icon">⌚</div>
+                        <h3>Wear OS & Apple Watch</h3>
+                        <p>A watch remote for your phone's queue — browse, play and skip without touching your phone.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1141,6 +1223,7 @@
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
                     <li><a href="#about">About Us</a></li>
                     <li><a href="blog.html">Blog & News</a></li>
                     <li><a href="#contact">Contact</a></li>
