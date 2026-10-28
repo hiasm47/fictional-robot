@@ -3,7 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audiline - News Just a Tap Away</title>
+    <title>Audiline - Audio News App | Listen to the News, Don't Read It</title>
+    <meta name="description" content="Audiline is a free audio news app for Android and iOS. Short, verified news stories read aloud and personalized by category, stitched into one continuous audio news briefing — with Android Auto, Apple CarPlay, Wear OS and Apple Watch support.">
+    <link rel="canonical" href="https://www.audiline.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Audiline">
+    <meta property="og:title" content="Audiline - Audio News App">
+    <meta property="og:description" content="Short, verified news stories read aloud and personalized by category — a continuous audio news briefing for your commute, workout or break.">
+    <meta property="og:url" content="https://www.audiline.com/">
+    <meta property="og:image" content="https://www.audiline.com/Logo.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Audiline - Audio News App">
+    <meta name="twitter:description" content="Short, verified news stories read aloud and personalized by category — a continuous audio news briefing for your commute, workout or break.">
+    <meta name="twitter:image" content="https://www.audiline.com/Logo.png">
 
     <!-- Meta Pixel Code -->
     <script>
@@ -33,18 +49,47 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "MobileApplication",
-      "name": "Audiline",
-      "description": "Short audio news app",
-      "applicationCategory": "NewsApplication",
-      "operatingSystem": "Android",
-      "offers": {"@type": "Offer", "price": "0"},
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.7",
-        "reviewCount": "1500"
-      },
-      "url": "https://www.audiline.com/"
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.audiline.com/#organization",
+          "name": "Audiline",
+          "url": "https://www.audiline.com/",
+          "logo": "https://www.audiline.com/Logo.png",
+          "sameAs": [
+            "https://www.instagram.com/audiline.news/",
+            "https://x.com/Audiline_news",
+            "https://www.linkedin.com/company/audiline-news/",
+            "https://www.facebook.com/profile.php?id=61585067360805"
+          ]
+        },
+        {
+          "@type": "MobileApplication",
+          "name": "Audiline",
+          "description": "Audiline is a free audio news app that reads short, verified news stories aloud, personalized by category and stitched into one continuous audio news briefing with a broadcast chime between stories. Includes Android Auto, Apple CarPlay, Wear OS and Apple Watch support.",
+          "applicationCategory": "NewsApplication",
+          "operatingSystem": "Android, iOS",
+          "publisher": {"@id": "https://www.audiline.com/#organization"},
+          "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.7",
+            "reviewCount": "1500"
+          },
+          "featureList": [
+            "Personalized Daily Brief built from chosen categories",
+            "Category albums with continuous, ordered playback",
+            "Keyword search across every published story",
+            "Read-along mode with synced on-screen text",
+            "Bookmarks with offline fallback",
+            "Background audio, lock-screen and Bluetooth controls",
+            "Android Auto integration",
+            "Apple CarPlay integration",
+            "Wear OS and Apple Watch companion remotes"
+          ],
+          "url": "https://www.audiline.com/"
+        }
+      ]
     }
     </script>
 
@@ -540,7 +585,7 @@
             font-size: 1.2rem;
         }
 
-        .feature-card h4 {
+        .feature-card h3 {
             font-size: 0.9rem;
             font-weight: 700;
             margin-bottom: 0.35rem;
@@ -592,7 +637,7 @@
         }
         .contact-email-link:hover { opacity: 0.75; }
 
-        .contact-right h4 {
+        .contact-right h3 {
             font-size: 0.72rem;
             text-transform: uppercase;
             letter-spacing: 0.15em;
@@ -701,7 +746,7 @@
             max-width: 240px;
         }
 
-        .footer-col h4 {
+        .footer-col h3 {
             font-size: 0.65rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
@@ -978,22 +1023,22 @@
                     <div class="feature-grid">
                         <div class="feature-card">
                             <div class="feature-icon">🎧</div>
-                            <h4>Audio-First</h4>
+                            <h3>Audio-First</h3>
                             <p>Hands-free news listening built for your lifestyle.</p>
                         </div>
                         <div class="feature-card">
                             <div class="feature-icon">⚡</div>
-                            <h4>Bite-Sized</h4>
+                            <h3>Bite-Sized</h3>
                             <p>Get the full picture in just a few minutes a day.</p>
                         </div>
                         <div class="feature-card">
                             <div class="feature-icon">🎯</div>
-                            <h4>Personalized</h4>
+                            <h3>Personalized</h3>
                             <p>Stories curated to the topics that matter to you.</p>
                         </div>
                         <div class="feature-card">
                             <div class="feature-icon">🔔</div>
-                            <h4>Always Fresh</h4>
+                            <h3>Always Fresh</h3>
                             <p>Breaking news delivered the moment it happens.</p>
                         </div>
                     </div>
@@ -1019,7 +1064,7 @@
                 </div>
  
                 <div>
-                    <h4 style="margin-bottom: 12px;">Follow us on</h4>
+                    <h3 style="margin-bottom: 12px;">Follow us on</h3>
                     <div class="social-grid">
                         <a href="https://www.instagram.com/audiline.news/" target="_blank" rel="noopener"
                             onclick="gtag('event', 'social_icon_click', {'platform': 'instagram'});"
@@ -1093,7 +1138,7 @@
             </div>
 
             <div class="footer-col">
-                <h4>Quick Links</h4>
+                <h3>Quick Links</h3>
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About Us</a></li>
@@ -1104,7 +1149,7 @@
             </div>
 
             <div class="footer-col">
-                <h4>Legal</h4>
+                <h3>Legal</h3>
                 <ul>
                     <li><a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a></li>
                     <li><a href="terms.html" target="_blank" rel="noopener">Terms of Service</a></li>
@@ -1112,7 +1157,7 @@
             </div>
 
             <div class="footer-col">
-                <h4>Follow Us</h4>
+                <h3>Follow Us</h3>
                 <ul>
                     <li><a href="https://www.instagram.com/audiline.news/" target="_blank" rel="noopener">Instagram</a></li>
                     <li><a href="https://x.com/Audiline_news" target="_blank" rel="noopener">Twitter (X)</a></li>

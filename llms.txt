@@ -1,0 +1,31 @@
+# Audiline
+
+> Audiline is a free audio news app for Android and iOS. Short, verified news stories
+> are read aloud and stitched into one continuous audio news briefing, with a broadcast
+> chime between stories, personalized by the categories a listener picks.
+
+## Product
+
+- [Website](https://www.audiline.com/)
+- [Download on Google Play](https://play.google.com/store/apps/details?id=com.audiline.app)
+- [Download on the App Store](https://apps.apple.com/us/app/audiline-short-audio-news/id6799126995)
+- [Blog & News](https://www.audiline.com/blog.html)
+
+## Features
+
+- Personalized Daily Brief built from the listener's chosen categories
+- Category albums with continuous, ordered playback and heard-story tracking
+- Keyword search across every published story, ranked by matching phrases
+- Read-along mode: a synced on-screen transcript follows the audio
+- Bookmarks, with offline fallback when a saved story has expired
+- Background audio with lock-screen, notification and Bluetooth controls
+- Adjustable playback speed and a sleep timer
+- Android Auto integration: category-only browser and system Now Playing controls
+- Apple CarPlay integration: category browser and system Now Playing controls
+- Wear OS and Apple Watch companion remotes for the phone's playback queue
+
+## Support
+
+- [Contact](mailto:support@audiline.com)
+- [Privacy Policy](https://www.audiline.com/privacy-policy.html)
+- [Terms of Service](https://www.audiline.com/terms.html)
