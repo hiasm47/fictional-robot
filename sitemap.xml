@@ -1,37 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <!-- Main Landing Page -->
   <url>
     <loc>https://www.audiline.com/</loc>
-    <lastmod>2026-07-21</lastmod>
-    <changefreq>daily</changefreq>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
-  <!-- Blog & News Page -->
+  <url>
+    <loc>https://www.audiline.com/features.html</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.audiline.com/about.html</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.audiline.com/faq.html</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <url>
     <loc>https://www.audiline.com/blog.html</loc>
-    <lastmod>2026-07-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
-
-  <!-- Blog Posts -->
   <url>
-    <loc>https://www.audiline.com/blog/attention-spans.html</loc>
-    <lastmod>2026-07-14</lastmod>
+    <loc>https://www.audiline.com/contact.html</loc>
+    <lastmod>2026-11-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  <url>
-    <loc>https://www.audiline.com/blog/audio-channels.html</loc>
-    <lastmod>2026-06-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <!-- Legal & Support Pages -->
   <url>
     <loc>https://www.audiline.com/privacy-policy.html</loc>
     <lastmod>2026-07-21</lastmod>
@@ -44,5 +48,4 @@
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
-
 </urlset>
